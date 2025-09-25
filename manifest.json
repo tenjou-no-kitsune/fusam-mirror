@@ -196,14 +196,14 @@
 			"name": "Eli's Bondage Club Helper (EBCH)",
 			"description": "Ungarble, custom notifications, altering other player's poses",
 			"author": "Elicia",
-			"repository": "https://gitlab.com/e2466/ebch",
-			"website": "https://e2466.gitlab.io/ebch",
+			"repository": "https://gitlab.com/zorgjbe/ebch",
+			"website": "https://zorgjbe.gitlab.io/ebch/",
 			"tags": ["enhancements", "automation"],
 			"type": "eval",
 			"versions": [
 				{
 					"distribution": "stable",
-					"source": "https://e2466.gitlab.io/ebch/master/EBCH.js"
+					"source": "https://zorgjbe.gitlab.io/ebch/master/EBCH.js"
 				}
 			]
 		},
