@@ -388,9 +388,7 @@ function hideAddonManager() {
 	document.removeEventListener("keydown", documentKeyDown);
 	document.removeEventListener("paste", documentPaste);
 	if (playerSettingsLoaded()) {
-		ServerAccountUpdate.QueueData({
-			OnlineSettings: Player.OnlineSettings,
-		})
+		ServerPlayerExtensionSettingsSync("FUSAMSettings");
 	}
 	loadAddons()
 }

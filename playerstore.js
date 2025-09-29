@@ -30,28 +30,48 @@ export function playerSettingsLoaded() {
 }
 
 export function get() {
-	if (!Player?.OnlineSettings?.FUSAMSettings) {
-		return {
-			enabledDistributions: {},
-		}
-	}
-	const s =
+	let settings = {}
+
+	if (Player?.ExtensionSettings?.FUSAMSettings) {
+		settings =
+		/** @type {import("./types/fusam.js").FUSAMSettings | Record<string, string>} */ (
+			JSON.parse(
+				LZString.decompressFromBase64(Player.ExtensionSettings?.FUSAMSettings)
+			)
+		);
+	}	else if (Player?.OnlineSettings?.FUSAMSettings && !Player?.ExtensionSettings?.FUSAMSettings) {
+		settings =
 		/** @type {import("./types/fusam.js").FUSAMSettings | Record<string, string>} */ (
 			JSON.parse(
 				LZString.decompressFromBase64(Player.OnlineSettings?.FUSAMSettings)
 			)
-		)
-	// Migration from initial version
-	if (isSettingsV1(s)) {
-		return s
+		);
+		Player.ExtensionSettings.FUSAMSettings = Player.OnlineSettings.FUSAMSettings;
+
+		ServerPlayerExtensionSettingsSync("FUSAMSettings");
+
+		delete Player.OnlineSettings?.FUSAMSettings;
+		ServerAccountUpdate.QueueData({
+			OnlineSettings: Player.OnlineSettings,
+		});
+	} else if (!Player?.ExtensionSettings?.FUSAMSettings) {
+		return {
+			enabledDistributions: {},
+		}
 	}
+
+	// Migration from initial version
+	if (isSettingsV1(settings)) {
+		return settings
+	}
+
 	return {
-		enabledDistributions: s || {},
+		enabledDistributions: settings || {},
 	}
 }
 
 function set(value) {
-	Player.OnlineSettings.FUSAMSettings = LZString.compressToBase64(
+	Player.ExtensionSettings.FUSAMSettings = LZString.compressToBase64(
 		JSON.stringify(value)
 	)
 }
@@ -76,7 +96,7 @@ function save() {
 }
 
 ;(async function () {
-	await waitFor(() => typeof Player !== "undefined" && !!Player?.OnlineSettings)
+	await waitFor(() => typeof Player !== "undefined" && !!Player?.OnlineSettings && !!Player?.ExtensionSettings)
 	settings = get()
 	loaded = true
 	console.debug("Loaded account settings", settings)
