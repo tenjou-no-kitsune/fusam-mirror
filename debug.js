@@ -68,9 +68,7 @@ export function registerFUSAMDebugMethod() {
 	registerDebugMethod("FUSAM", () => {
 		let d = `Version: LOCAL_FUSAM\n`
 		d += `Browser: ${navigator.userAgent}\n`
-		d += `Local storage: ${
-			isLocalStorageAvailable() ? "available" : "unavailable"
-		}\n`
+		d += `Local storage: ${isLocalStorageAvailable() ? "available" : "unavailable"}\n`
 		d += `Domain used: ${window.location.host}\n`
 		d += `Last error: ${getLastError()}\n`
 		d += `FUSAM-enabled addons:\n - ${Object.entries(window.FUSAM.addons)

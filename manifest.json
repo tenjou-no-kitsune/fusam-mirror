@@ -368,14 +368,14 @@
 			"type": "script",
 			"website": "https://maplesyrup.gitgud.site/maples-bc-plugin-library/plugins/fetish-share/",
 			"versions": [
-			  {
-				"distribution": "stable",
-				"source": "https://maplesyrup.gitgud.site/maples-bc-plugin-library/raw-plugins/stable/fetish-share/main.js"
-			  },
-			  {
-				"distribution": "dev",
-				"source": "https://maplesyrup.gitgud.site/maples-bc-plugin-library/raw-plugins/dev/fetish-share/main.js"
-			  }
+				{
+					"distribution": "stable",
+					"source": "https://maplesyrup.gitgud.site/maples-bc-plugin-library/raw-plugins/stable/fetish-share/main.js"
+				},
+				{
+					"distribution": "dev",
+					"source": "https://maplesyrup.gitgud.site/maples-bc-plugin-library/raw-plugins/dev/fetish-share/main.js"
+				}
 			]
 		},
 		{
@@ -426,7 +426,7 @@
 			"author": "Lunar Kitsunify",
 			"repository": "https://github.com/LunarKitsunify/MoonCEBC",
 			"discord": "https://discord.gg/ZByQXVHm4u",
-			"tags": ["enhancements","expansion"],
+			"tags": ["enhancements", "expansion"],
 			"type": "module",
 			"website": "https://clubcardmonitoring.onrender.com/",
 			"versions": [
@@ -442,7 +442,7 @@
 		},
 		{
 			"id": "MPA",
-			"icon":"https://mayathefoxy.github.io/MPA/paw64.png",
+			"icon": "https://mayathefoxy.github.io/MPA/paw64.png",
 			"name": "Maya's Petplay Additions (MPA)",
 			"description": "Adds more petplay themed content",
 			"author": "MayaTheFoxy",

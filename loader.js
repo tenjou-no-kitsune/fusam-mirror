@@ -10,8 +10,7 @@ let firstLoad = true
 
 const lastSessionStatusKey = "fusam.lastSessionStatus"
 const lastErrorKey = "fusam.lastError"
-const lastSessionHadError =
-	localStorage?.getItem?.(lastSessionStatusKey) === "error" || false
+const lastSessionHadError = localStorage?.getItem?.(lastSessionStatusKey) === "error" || false
 setLastSessionStatus("ok")
 
 window.addEventListener("error", (event) => {
@@ -45,8 +44,7 @@ export async function loadAddons() {
 		const lastError = localStorage?.getItem?.(lastErrorKey)
 		console.warn("The previous session had an error", lastError)
 		const [answer] = await showAsyncModal({
-			prompt:
-				"The previous session had an error. Do you want to skip loading addons?",
+			prompt: "The previous session had an error. Do you want to skip loading addons?",
 			buttons: {
 				submit: "Yes",
 				cancel: "No",
@@ -90,23 +88,23 @@ async function load(settings) {
 			window.FUSAM.addons[id].status = "error"
 			continue
 		}
-		console.debug(`Loading addon ${id} from ${distribution}`);
-		(async () => {
+		console.debug(`Loading addon ${id} from ${distribution}`)
+		;(async () => {
 			try {
-				const URL = version.source + (addon.noCacheBusting ? '' : `?v=${Date.now()}`);
+				const URL = version.source + (addon.noCacheBusting ? "" : `?v=${Date.now()}`)
 				switch (addon.type) {
 					case "eval":
 						await evalAddon(URL, version.source)
 						window.FUSAM.addons[id].status = "loaded"
-					break
+						break
 					case "module":
 						await import(URL)
 						window.FUSAM.addons[id].status = "loaded"
-					break
+						break
 					case "script":
 						await scriptAddon(URL, "text/javascript")
 						window.FUSAM.addons[id].status = "loaded"
-					break
+						break
 				}
 			} catch (e) {
 				console.error(`Failed to load addon ${id}`, e)
@@ -138,10 +136,7 @@ async function evalAddon(url, source) {
 	await fetch(url)
 		.then((resp) => resp.text())
 		.then((resp) => {
-			resp = resp.replace(
-				/sourceMappingURL=.*?.map/u,
-				`sourceMappingURL=${source}.map`
-			)
+			resp = resp.replace(/sourceMappingURL=.*?.map/u, `sourceMappingURL=${source}.map`)
 			eval?.(resp)
 		})
 }

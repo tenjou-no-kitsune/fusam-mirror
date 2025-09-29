@@ -37,8 +37,4 @@
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import(
-	`http://localhost:3001/fusam.js?v=${(
-		Date.now() / 10000
-	).toFixed(0)}`
-)
+import(`http://localhost:3001/fusam.js?v=${(Date.now() / 10000).toFixed(0)}`)

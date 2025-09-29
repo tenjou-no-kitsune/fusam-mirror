@@ -10,9 +10,11 @@
 		"dexie": "^3.2.4",
 		"eslint": "^8.44.0",
 		"eslint-config-prettier": "^8.8.0",
+		"prettier": "^3.6.2",
 		"typescript": "^5.1.6"
 	},
 	"scripts": {
-		"serve": "npx http-server . -p 3001 --cors"
+		"serve": "npx http-server . -p 3001 --cors",
+		"format": "npx prettier --config .prettierrc.yaml -w ."
 	}
 }

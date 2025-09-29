@@ -6,7 +6,7 @@ declare global {
 		/** @deprecated */
 		FUSAMSettings: string
 	}
-	
+
 	interface ExtensionSettings {
 		FUSAMSettings: string
 	}

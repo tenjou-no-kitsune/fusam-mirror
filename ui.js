@@ -54,7 +54,7 @@ function showButton(args, next) {
 
 function hideButton(args, next) {
 	document.getElementById(showButtonId)?.remove()
-	return next ? next(args) : undefined;
+	return next ? next(args) : undefined
 }
 
 async function showAddonManager() {
@@ -102,16 +102,16 @@ async function searchInput(e) {
 }
 
 /**
- * Propogate key presses of writable characters to the search input
+ * Propagate key presses of writable characters to the search input
  * @this {HTMLElement}
  * @param {KeyboardEvent} e
  */
 function documentKeyDown(e) {
 	if (
-		e.ctrlKey
-		|| e.altKey
-		|| e.metaKey
-		|| !(document.activeElement === null || document.activeElement === document.body)
+		e.ctrlKey ||
+		e.altKey ||
+		e.metaKey ||
+		!(document.activeElement === null || document.activeElement === document.body)
 	) {
 		return
 	}
@@ -149,8 +149,8 @@ function documentKeyDown(e) {
  */
 function documentPaste(e) {
 	if (
-		!(document.activeElement === null || document.activeElement === document.body)
-		|| globalThis.getSelection()?.type === "Range"
+		!(document.activeElement === null || document.activeElement === document.body) ||
+		globalThis.getSelection()?.type === "Range"
 	) {
 		return
 	}
@@ -190,7 +190,11 @@ async function drawAddonManager() {
 				<div class="fusam-search-box">
 					<input type="search" placeholder="Filter addons" id="fusam-search" oninput="searchInput()" list="fusam-search-list"></input>
 					<datalist id="fusam-search-list">
-					${s.manifest.addons.map(entry => entry.name).sort().map(value => `<option value="${value}"></option>`).join("")}
+					${s.manifest.addons
+						.map((entry) => entry.name)
+						.sort()
+						.map((value) => `<option value="${value}"></option>`)
+						.join("")}
 					</datalist>
 				</div>
 				<h1 class="fusam-title">Addon Manager</h1>
@@ -200,7 +204,7 @@ async function drawAddonManager() {
 				</div>
 			</header>
 			<div id="fusam-addon-manager-body">
-			<div class="fusam-intro">	
+			<div class="fusam-intro">
 					<h3>
 						Welcome to the one stop shop for addon installation in BC!
 					</h3>
@@ -224,9 +228,7 @@ async function drawAddonManager() {
 						: ""
 				}
 				<menu id="fusam-addons">
-				${s.manifest.addons
-					.map((entry) => drawEntry(entry))
-					.join("")}
+				${s.manifest.addons.map((entry) => drawEntry(entry)).join("")}
 				</menu>
 				<footer class="fusam-attribution">
 					<b id="fusam-glossary-label">Glossary:</b>
@@ -249,13 +251,13 @@ async function drawAddonManager() {
 		const local = localDistribution(entry.id)
 		const online = onlineDistribution(entry.id)
 		const debuggable = canDebug(entry.id)
-		const useIcons = true;
+		const useIcons = true
 
 		return `
-		<li class="fusam-addon-container"> 
+		<li class="fusam-addon-container">
 			<article class="fusam-addon" aria-labelledby="${entry.id}-name">
 				<section class="addon-icon">
-					<img src="${entry.icon ||  BaseURL + "static/assets/icon-fallback.svg"}" alt="${entry.name} icon">
+					<img src="${entry.icon || BaseURL + "static/assets/icon-fallback.svg"}" alt="${entry.name} icon">
 				</section>
 				<section class="addon-content">
 					<h2 class="addon-name" id="${entry.id}-name">${entry.name}</h2>
@@ -270,40 +272,36 @@ async function drawAddonManager() {
 							<label for="${entry.id}-device">Browser</label>
 							<select id="${entry.id}-device" data-addon="${entry.id}">
 							<option value="none" selected>None</option>
-								${entry.versions.map((version) =>
-									drawVersionOption(version, local === version.distribution)
-								)}
+								${entry.versions.map((version) => drawVersionOption(version, local === version.distribution))}
 							</select>
 						</div>
 						<div class="fusam-addon-entry-version-account">
 							<label for="${entry.id}-account">Account</label>
 							<select id="${entry.id}-account" data-addon="${entry.id}" ${!playerSettingsLoaded() ? "disabled" : ""}>
-							<option value="none" selected>None</option>		
-								${entry.versions.map((version) =>
-									drawVersionOption(version, online === version.distribution)
-								)}
+							<option value="none" selected>None</option>
+								${entry.versions.map((version) => drawVersionOption(version, online === version.distribution))}
 							</select>
-						</div>	
+						</div>
 					</div>
 					<div class="addon-right-interactions" role="group">
 						${
 							entry.discord
-								? `<div><a rel="external" target="_blank" href="${entry.discord}">${useIcons ? `<img src="${BaseURL}static/assets/discord.svg" alt="discord invite">` : 'discord'}</a></div>`
+								? `<div><a rel="external" target="_blank" href="${entry.discord}">${useIcons ? `<img src="${BaseURL}static/assets/discord.svg" alt="discord invite">` : "discord"}</a></div>`
 								: ""
 						}
 						${
 							entry.website
-								? `<div><a rel="external" target="_blank" href="${entry.website}">${useIcons ? `<img src="${BaseURL}static/assets/website.svg" alt="website link">` : 'website'}</a></div>`
+								? `<div><a rel="external" target="_blank" href="${entry.website}">${useIcons ? `<img src="${BaseURL}static/assets/website.svg" alt="website link">` : "website"}</a></div>`
 								: ""
 						}
 						${
 							entry.repository
-								? `<div><a rel="external" target="_blank" href="${entry.repository}"> ${useIcons ? `<img src="${BaseURL}static/assets/repository.svg" alt="repository link">` : 'repository'}</a></div>`
+								? `<div><a rel="external" target="_blank" href="${entry.repository}"> ${useIcons ? `<img src="${BaseURL}static/assets/repository.svg" alt="repository link">` : "repository"}</a></div>`
 								: ""
 						}
 						${
 							debuggable
-								? `<div><a href="#" onclick="debugReport()" data-addon="${entry.id}">${useIcons ? `<img src="${BaseURL}static/assets/debug.svg" alt="download debug report">` : 'download debug report'}</a></div>`
+								? `<div><a href="#" onclick="debugReport()" data-addon="${entry.id}">${useIcons ? `<img src="${BaseURL}static/assets/debug.svg" alt="download debug report">` : "download debug report"}</a></div>`
 								: ""
 						}
 					</div>
@@ -319,9 +317,7 @@ async function drawAddonManager() {
 	 */
 	function drawVersionOption(version, selected) {
 		return `
-			<option value="${version.distribution}" ${selected ? "#selected" : ""}>${
-			version.distribution
-		}</option>
+			<option value="${version.distribution}" ${selected ? "#selected" : ""}>${version.distribution}</option>
 		`
 	}
 }
@@ -332,7 +328,7 @@ function drawAttribution() {
                 Git Logo by Jason Long is licensed under the
                 <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noopener noreferrer">Creative Commons Attribution 3.0 Unported License</a>.
             </small>
-			 
+
 	`
 }
 function registerEventListeners() {
@@ -340,10 +336,10 @@ function registerEventListeners() {
 	document.addEventListener("paste", documentPaste)
 
 	/** @type {HTMLSelectElement[]} */
-	const allSelects = Array.from(document.querySelectorAll(".fusam-addon-entry-buttons select"));
-	const maxWidth = allSelects.reduce((maxWidth, el) => Math.max(maxWidth, el.clientWidth), 0);
+	const allSelects = Array.from(document.querySelectorAll(".fusam-addon-entry-buttons select"))
+	const maxWidth = allSelects.reduce((maxWidth, el) => Math.max(maxWidth, el.clientWidth), 0)
 	if (maxWidth !== 0) {
-		allSelects.forEach(e => e.style.width = `${maxWidth}px`);
+		allSelects.forEach((e) => (e.style.width = `${maxWidth}px`))
 	}
 
 	document.querySelectorAll(".fusam-addon-entry-version-device select").forEach(
@@ -363,32 +359,30 @@ function registerEventListeners() {
 		}
 	)
 
-	document
-		.querySelectorAll(".fusam-addon-entry-version-account select")
-		.forEach(
-			/**
-			 * @param {HTMLSelectElement} select
-			 */
-			(select) => {
-				const addon = select.getAttribute("data-addon")
-				select.onchange = () => {
-					const distribution = select.value
-					if (distribution === "none") {
-						disableOnline(addon)
-					} else {
-						enableOnline(addon, distribution)
-					}
+	document.querySelectorAll(".fusam-addon-entry-version-account select").forEach(
+		/**
+		 * @param {HTMLSelectElement} select
+		 */
+		(select) => {
+			const addon = select.getAttribute("data-addon")
+			select.onchange = () => {
+				const distribution = select.value
+				if (distribution === "none") {
+					disableOnline(addon)
+				} else {
+					enableOnline(addon, distribution)
 				}
 			}
-		)
+		}
+	)
 }
 
 function hideAddonManager() {
 	document.getElementById(addonManagerId).remove()
-	document.removeEventListener("keydown", documentKeyDown);
-	document.removeEventListener("paste", documentPaste);
+	document.removeEventListener("keydown", documentKeyDown)
+	document.removeEventListener("paste", documentPaste)
 	if (playerSettingsLoaded()) {
-		ServerPlayerExtensionSettingsSync("FUSAMSettings");
+		ServerPlayerExtensionSettingsSync("FUSAMSettings")
 	}
 	loadAddons()
 }
@@ -409,17 +403,17 @@ export function hookUI() {
 	SDK.hookFunction("LoginResponse", HOOK_PRIORITY.ADD_BEHAVIOR, hideButton)
 	SDK.hookFunction("PreferenceExit", HOOK_PRIORITY.ADD_BEHAVIOR, hideButton)
 	SDK.hookFunction("DisclaimerLoad", HOOK_PRIORITY.ADD_BEHAVIOR, hideButton)
-	
+
 	SDK.hookFunction("PreferenceRun", HOOK_PRIORITY.ADD_BEHAVIOR, (args, next) => {
 		const ret = next(args)
 		if (typeof PreferenceSubscreen === "object") {
 			if (PreferenceSubscreen.name !== "Main") {
-				hideButton();
+				hideButton()
 			} else {
 				showButton()
 			}
 		}
-		return ret;
+		return ret
 	})
 
 	if (CurrentScreen === "Preference" || CurrentScreen === "Login") {
@@ -589,4 +583,3 @@ export function showAsyncModal(opts) {
 		})
 	})
 }
-

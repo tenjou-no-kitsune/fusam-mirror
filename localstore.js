@@ -21,10 +21,9 @@ import { isSettingsV1 } from "./typeasserts.js"
 const storageKey = "fusam.settings"
 
 export function get() {
-	const s =
-		/** @type {import("./types/fusam.js").FUSAMSettings | Record<string, string>} */ (
-			JSON.parse(window.localStorage.getItem(storageKey) || "{}") || {}
-		)
+	const s = /** @type {import("./types/fusam.js").FUSAMSettings | Record<string, string>} */ (
+		JSON.parse(window.localStorage.getItem(storageKey) || "{}") || {}
+	)
 	// Migration from initial version
 	if (isSettingsV1(s)) {
 		return s

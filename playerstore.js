@@ -33,27 +33,21 @@ export function get() {
 	let settings = {}
 
 	if (Player?.ExtensionSettings?.FUSAMSettings) {
-		settings =
-		/** @type {import("./types/fusam.js").FUSAMSettings | Record<string, string>} */ (
-			JSON.parse(
-				LZString.decompressFromBase64(Player.ExtensionSettings?.FUSAMSettings)
-			)
-		);
-	}	else if (Player?.OnlineSettings?.FUSAMSettings && !Player?.ExtensionSettings?.FUSAMSettings) {
-		settings =
-		/** @type {import("./types/fusam.js").FUSAMSettings | Record<string, string>} */ (
-			JSON.parse(
-				LZString.decompressFromBase64(Player.OnlineSettings?.FUSAMSettings)
-			)
-		);
-		Player.ExtensionSettings.FUSAMSettings = Player.OnlineSettings.FUSAMSettings;
+		settings = /** @type {import("./types/fusam.js").FUSAMSettings | Record<string, string>} */ (
+			JSON.parse(LZString.decompressFromBase64(Player.ExtensionSettings?.FUSAMSettings))
+		)
+	} else if (Player?.OnlineSettings?.FUSAMSettings && !Player?.ExtensionSettings?.FUSAMSettings) {
+		settings = /** @type {import("./types/fusam.js").FUSAMSettings | Record<string, string>} */ (
+			JSON.parse(LZString.decompressFromBase64(Player.OnlineSettings?.FUSAMSettings))
+		)
+		Player.ExtensionSettings.FUSAMSettings = Player.OnlineSettings.FUSAMSettings
 
-		ServerPlayerExtensionSettingsSync("FUSAMSettings");
+		ServerPlayerExtensionSettingsSync("FUSAMSettings")
 
-		delete Player.OnlineSettings?.FUSAMSettings;
+		delete Player.OnlineSettings?.FUSAMSettings
 		ServerAccountUpdate.QueueData({
 			OnlineSettings: Player.OnlineSettings,
-		});
+		})
 	} else if (!Player?.ExtensionSettings?.FUSAMSettings) {
 		return {
 			enabledDistributions: {},
@@ -71,9 +65,7 @@ export function get() {
 }
 
 function set(value) {
-	Player.ExtensionSettings.FUSAMSettings = LZString.compressToBase64(
-		JSON.stringify(value)
-	)
+	Player.ExtensionSettings.FUSAMSettings = LZString.compressToBase64(JSON.stringify(value))
 }
 
 export function enableMod(id, distribution) {

@@ -58,7 +58,7 @@ let manifest = {
 
 export async function updateManifest() {
 	// TODO: Consider making this set user-configurable
-	const pinnedAddonIDs = new Set(["WCE", "BCX"]);
+	const pinnedAddonIDs = new Set(["WCE", "BCX"])
 	const response = await fetch(BaseURL + "manifest.json?v=" + Date.now())
 	manifest = /** @type {Manifest} */ (await response.json())
 	manifest.addons.sort((a, b) => {

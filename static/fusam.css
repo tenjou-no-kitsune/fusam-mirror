@@ -83,12 +83,12 @@
 .fusam-icon-button {
 	aspect-ratio: 1;
 	padding: 0.2em;
-  	border: 1px solid var(--fusam-border);
+	border: 1px solid var(--fusam-border);
 	background-color: var(--fusam-inset-element);
-	cursor:pointer;
+	cursor: pointer;
 	& > img {
 		width: 2.3em;
- 		height: 2.3em;
+		height: 2.3em;
 		pointer-events: none;
 		filter: var(--icon-filter);
 	}
@@ -118,7 +118,7 @@
 #fusam-addon-manager-header {
 	display: flex;
 	align-items: center;
-	background:var(--fusam-element);
+	background: var(--fusam-element);
 	justify-content: space-between;
 	padding: 1em;
 	& .fusam-title {
@@ -136,8 +136,8 @@
 			background-color: var(--fusam-inset-element);
 			height: 100%;
 			border: none;
-      		border-bottom: 1px solid var(--fusam-border);
-      		padding: 1em;
+			border-bottom: 1px solid var(--fusam-border);
+			padding: 1em;
 			&::placeholder {
 				color: var(--fusam-text-placeholder);
 			}
@@ -163,8 +163,8 @@
 	align-items: center;
 	overflow-y: auto;
 	& > .fusam-intro {
-		background:var(--fusam-element);
-		padding:1em;
+		background: var(--fusam-element);
+		padding: 1em;
 		margin: 1em;
 		& p {
 			margin: 0;
@@ -192,7 +192,7 @@
 
 .fusam-addon-container {
 	flex: 1;
-	min-width:43em;
+	min-width: 43em;
 	list-style: none;
 }
 
@@ -200,11 +200,12 @@
 	width: 100%;
 	display: grid;
 	grid-template-columns: 10.5em auto;
-  	grid-template-rows: 7em 3.5em;
-	& .fusam-addon-entry-version-device, & .fusam-addon-entry-version-account {
-		background-color:var(--fusam-element);
+	grid-template-rows: 7em 3.5em;
+	& .fusam-addon-entry-version-device,
+	& .fusam-addon-entry-version-account {
+		background-color: var(--fusam-element);
 		height: auto;
-    	margin-top: 0.5em;
+		margin-top: 0.5em;
 		position: relative;
 		& > label {
 			position: absolute;
@@ -215,10 +216,10 @@
 			left: 0.5em;
 		}
 		& select {
-			cursor:pointer;
+			cursor: pointer;
 			margin: 0.5em;
 			background-color: var(--fusam-inset-element);
-			border:none;
+			border: none;
 			height: 2.2em;
 			font-weight: bold;
 		}
@@ -256,7 +257,7 @@
 		& .addon-description {
 			margin: 0;
 			height: 4em;
-			overflow-y:auto;
+			overflow-y: auto;
 			user-select: text;
 		}
 		& .addon-authors {
@@ -272,19 +273,19 @@
 		flex-direction: row;
 		display: flex;
 		justify-content: space-between;
-		gap:0.5em;
+		gap: 0.5em;
 		& .addon-left-interactions {
 			display: flex;
 			flex-direction: row;
-		  	gap: 0.5em;
-      		margin-left: 0.5em;
+			gap: 0.5em;
+			margin-left: 0.5em;
 			& select {
-				cursor:pointer;
+				cursor: pointer;
 				color: var(--fusam-text);
-				margin:0.6em;
+				margin: 0.6em;
 				font-size: 1em;
 				background-color: var(--fusam-inset-element);
-				border:none;
+				border: none;
 				height: 1.9em;
 				font-weight: bold;
 				text-transform: capitalize;
@@ -308,7 +309,7 @@
 			}
 			& img {
 				width: 2em;
-        		height: 2em;
+				height: 2em;
 				filter: var(--icon-filter);
 				pointer-events: none;
 			}
