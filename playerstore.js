@@ -88,7 +88,7 @@ function save() {
 }
 
 ;(async function () {
-	await waitFor(() => typeof Player !== "undefined" && !!Player?.OnlineSettings && !!Player?.ExtensionSettings)
+	await waitFor(() => Player && ServerIsLoggedIn())
 	settings = get()
 	loaded = true
 	console.debug("Loaded account settings", settings)
