@@ -36,6 +36,7 @@ export function get() {
 		settings = /** @type {import("./types/fusam.js").FUSAMSettings | Record<string, string>} */ (
 			JSON.parse(LZString.decompressFromBase64(Player.ExtensionSettings?.FUSAMSettings))
 		)
+		loaded = true
 	} else if (Player?.OnlineSettings?.FUSAMSettings && !Player?.ExtensionSettings?.FUSAMSettings) {
 		settings = /** @type {import("./types/fusam.js").FUSAMSettings | Record<string, string>} */ (
 			JSON.parse(LZString.decompressFromBase64(Player.OnlineSettings?.FUSAMSettings))
@@ -48,6 +49,7 @@ export function get() {
 		ServerAccountUpdate.QueueData({
 			OnlineSettings: Player.OnlineSettings,
 		})
+		loaded = true
 	} else if (!Player?.ExtensionSettings?.FUSAMSettings) {
 		return {
 			enabledDistributions: {},
@@ -90,6 +92,5 @@ function save() {
 ;(async function () {
 	await waitFor(() => Player && ServerIsLoggedIn())
 	settings = get()
-	loaded = true
 	console.debug("Loaded account settings", settings)
 })()
