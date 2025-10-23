@@ -583,3 +583,7 @@ export function showAsyncModal(opts) {
 		})
 	})
 }
+
+export function getUserLanguages() {
+	return navigator.languages.reduce((stack, val) => { stack.push(val); stack.push(val.split("-")[0]); return stack}, [])
+}

@@ -380,7 +380,10 @@
 		},
 		{
 			"id": "echocloth",
-			"name": "服装拓展",
+			"name": {
+				"en":"Echo's Clothing Mod",
+				"cn": "服装拓展"
+			},
 			"description": "Expansion on clothing options",
 			"author": "Echo",
 			"repository": "https://github.com/SugarChain-Studio/echo-clothing-ext",
@@ -400,7 +403,10 @@
 		},
 		{
 			"id": "echomove",
-			"name": "动作拓展",
+			"name": {
+				"en": "Echo's Activities Mod",
+				"cn": "动作拓展"
+			},
 			"description": "Expansion on activity options",
 			"author": "Echo",
 			"repository": "https://github.com/SugarChain-Studio/echo-activity-ext",
@@ -547,7 +553,10 @@
 		{
 			"id": "LianChat",
 			"icon": "https://xinlian132243.github.io/BCMod/Assets/LianChatButton.png",
-			"name": "涟信 LianChat",
+			"name": {
+				"en": "LianChat",
+				"cn": "涟信"
+			},
 			"description": "A more modern interface for private messaging with friends, custom avatars and signatures, and the ability to view lobby rooms from anywhere.",
 			"author": "XinLian",
 			"repository": "https://github.com/XinLian132243/BCMod/",

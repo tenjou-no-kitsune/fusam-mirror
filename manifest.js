@@ -17,6 +17,7 @@
  */
 
 import { BaseURL } from "./config.js"
+import { getUserLanguages } from "./ui.js";
 
 const MANIFEST_TAGS = Object.freeze(/** @type {const} */ (['automation', 'cheats', 'enhancements', 'expansion', 'recommended']));
 
@@ -80,9 +81,9 @@ function isUrl(url) {
 export class ManifestEntry {
 	/** @type {string} Short name of the addon, alphanumeric, no spaces */
 	id;
-	/** @type {string} Full name of the addon */
+	/** @type {string | Record<string, string>} Full name of the addon */
 	#name;
-	/** @type {string} Short description of the addon */
+	/** @type {string | Record<string, string>} Short description of the addon */
 	#description;
 	/** @type {string} Name of the addon author */
 	author;
@@ -112,14 +113,14 @@ export class ManifestEntry {
 			throw new ManifestError("Missing addon.id field");
 		}
 		this.id = data.id;
-		if (!("name" in data && typeof data.name === "string")) {
+		if (!("name" in data && (typeof data.name === "string" || CommonIsObject(data.name) && Object.values(data.name).every(v => typeof v === "string")))) {
 			throw new ManifestError(`Missing addon.name field for addon: ${data.id}`);
 		}
-		this.#name = data.name;
-		if (!("description" in data && typeof data.description === "string")) {
+		this.#name = /** @type {ManifestEntry["name"]} */ (data.name);
+		if (!("description" in data && (typeof data.description === "string" || CommonIsObject(data.name) && Object.values(data.name).every(v => typeof v === "string")))) {
 			throw new ManifestError(`Missing addon.description field for addon: ${data.id}`);
 		}
-		this.#description = data.description;
+		this.#description = /** @type {ManifestEntry["name"]} */ (data.description);
 		if (!("author" in data && typeof data.author === "string")) {
 			throw new ManifestError(`Missing addon.author field for addon: ${data.id}`);
 		}
@@ -177,11 +178,19 @@ export class ManifestEntry {
 	}
 
 	get name() {
-		return this.#name;
+		if (typeof this.#name === "string") return this.#name;
+		for (const lang of getUserLanguages()) {
+			if (this.#name[lang]) return this.#name[lang];
+		}
+		return this.#name["en"];
 	}
 
 	get description() {
-		return this.#description;
+		if (typeof this.#description === "string") return this.#description;
+		for (const lang of getUserLanguages()) {
+			if (this.#description[lang]) return this.#description[lang];
+		}
+		return this.#description["en"];
 	}
 }
 
