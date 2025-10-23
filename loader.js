@@ -86,7 +86,7 @@ export async function loadAddons() {
 	const browserOnlyAddonsIDs = getLoadedAddonsByStatus("browser-only")
 	if (browserOnlyAddonsIDs.length) {
 		const res = await showAsyncModal({
-			prompt: `The following addons are loaded by your account, but they're marked to only be compatible with a Browser-level load. They'll be moved to the proper level, but you'll have to refresh to fix the issue:\n:${browserOnlyAddonsIDs.join(", ")}`,
+			prompt: `The following addons are loaded by your account, but they're marked to only be compatible with a Browser-level load. They'll be moved to the proper level, but you'll have to refresh to fix the issue:\n${browserOnlyAddonsIDs.join(", ")}`,
 			buttons: { submit: "Fix and Refresh", ignore: "Ignore" },
 		})
 		if (res[0] === "submit") {
