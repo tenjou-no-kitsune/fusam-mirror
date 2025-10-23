@@ -1,8 +1,7 @@
 import { waitFor } from "./delay.js"
-import { get as getLocal } from "./localstore.js"
+import { getBrowser } from "./localstore.js"
 import { getAddon, getAddonVersion, updateManifest } from "./manifest.js"
-import { playerSettingsLoaded } from "./playerstore.js"
-import { get } from "./settings.js"
+import { getAccount, playerSettingsLoaded } from "./playerstore.js"
 import { showAsyncModal } from "./ui.js"
 
 let skipLoading = false
@@ -58,15 +57,11 @@ export async function loadAddons() {
 	firstLoad = false
 	await updateManifest()
 
-	// Skip loading device addons if the player is already logged in
-	if (!playerSettingsLoaded()) {
-		const addons = getLocal()
-		await load(addons.enabledDistributions)
-	}
+	// Load device addons immediately, then wait for a login to happen
+	await load(getBrowser().enabledDistributions)
 
 	await waitFor(() => playerSettingsLoaded())
-	const addons = get()
-	await load(addons.enabledDistributions)
+	await load(getAccount().enabledDistributions)
 }
 
 /**

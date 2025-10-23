@@ -21,15 +21,15 @@ import { canDebug, generateDebugReport } from "./debug.js"
 import { waitFor } from "./delay.js"
 import { loadAddons } from "./loader.js"
 import {
-	disableMod as disableLocal,
-	enableMod as enableLocal,
-	distribution as localDistribution,
+	disableBrowserMod,
+	enableBrowserMod,
+	browserDistribution,
 } from "./localstore.js"
 import { getManifest } from "./manifest.js"
 import {
-	disableMod as disableOnline,
-	enableMod as enableOnline,
-	distribution as onlineDistribution,
+	disableAccountMod,
+	enableAccountMod,
+	accountDistribution,
 	playerSettingsLoaded,
 } from "./playerstore.js"
 import { HOOK_PRIORITY, SDK } from "./vendor/bcmodsdk.js"
@@ -248,8 +248,8 @@ async function drawAddonManager() {
 	 * @param {import("./manifest").ManifestEntry} entry
 	 */
 	function drawEntry(entry) {
-		const local = localDistribution(entry.id)
-		const online = onlineDistribution(entry.id)
+		const device = browserDistribution(entry.id)
+		const account = accountDistribution(entry.id)
 		const debuggable = canDebug(entry.id)
 		const useIcons = true
 
@@ -272,14 +272,14 @@ async function drawAddonManager() {
 							<label for="${entry.id}-device">Browser</label>
 							<select id="${entry.id}-device" data-addon="${entry.id}">
 							<option value="none" selected>None</option>
-								${entry.versions.map((version) => drawVersionOption(version, local === version.distribution))}
+								${entry.versions.map((version) => drawVersionOption(version, device === version.distribution))}
 							</select>
 						</div>
 						<div class="fusam-addon-entry-version-account">
 							<label for="${entry.id}-account">Account</label>
 							<select id="${entry.id}-account" data-addon="${entry.id}" ${!playerSettingsLoaded() ? "disabled" : ""}>
 							<option value="none" selected>None</option>
-								${entry.versions.map((version) => drawVersionOption(version, online === version.distribution))}
+								${entry.versions.map((version) => drawVersionOption(version, account === version.distribution))}
 							</select>
 						</div>
 					</div>
@@ -351,9 +351,9 @@ function registerEventListeners() {
 			select.onchange = () => {
 				const distribution = select.value
 				if (distribution === "none") {
-					disableLocal(addon)
+					disableBrowserMod(addon)
 				} else {
-					enableLocal(addon, distribution)
+					enableBrowserMod(addon, distribution)
 				}
 			}
 		}
@@ -368,9 +368,9 @@ function registerEventListeners() {
 			select.onchange = () => {
 				const distribution = select.value
 				if (distribution === "none") {
-					disableOnline(addon)
+					disableAccountMod(addon)
 				} else {
-					enableOnline(addon, distribution)
+					enableAccountMod(addon, distribution)
 				}
 			}
 		}

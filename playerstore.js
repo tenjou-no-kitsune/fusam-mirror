@@ -29,16 +29,17 @@ export function playerSettingsLoaded() {
 	return loaded
 }
 
-export function get() {
-	let settings = {}
+export function getAccount() {
+	/** @type {import("./types/fusam.js").FUSAMSettings} */
+	let settings = { enabledDistributions: {} }
 
 	if (Player?.ExtensionSettings?.FUSAMSettings) {
-		settings = /** @type {import("./types/fusam.js").FUSAMSettings | Record<string, string>} */ (
+		settings = /** @type {import("./types/fusam.js").FUSAMSettings} */ (
 			JSON.parse(LZString.decompressFromBase64(Player.ExtensionSettings?.FUSAMSettings))
 		)
 		loaded = true
 	} else if (Player?.OnlineSettings?.FUSAMSettings && !Player?.ExtensionSettings?.FUSAMSettings) {
-		settings = /** @type {import("./types/fusam.js").FUSAMSettings | Record<string, string>} */ (
+		settings = /** @type {import("./types/fusam.js").FUSAMSettings} */ (
 			JSON.parse(LZString.decompressFromBase64(Player.OnlineSettings?.FUSAMSettings))
 		)
 		Player.ExtensionSettings.FUSAMSettings = Player.OnlineSettings.FUSAMSettings
@@ -51,9 +52,7 @@ export function get() {
 		})
 		loaded = true
 	} else if (!Player?.ExtensionSettings?.FUSAMSettings) {
-		return {
-			enabledDistributions: {},
-		}
+		loaded = true
 	}
 
 	// Migration from initial version
@@ -62,35 +61,35 @@ export function get() {
 	}
 
 	return {
-		enabledDistributions: settings || {},
+		enabledDistributions: settings ?? {},
 	}
 }
 
-function set(value) {
+function setAccount(value) {
 	Player.ExtensionSettings.FUSAMSettings = LZString.compressToBase64(JSON.stringify(value))
 }
 
-export function enableMod(id, distribution) {
+export function enableAccountMod(id, distribution) {
 	settings.enabledDistributions[id] = distribution
-	save()
+	saveAccount()
 }
 
-export function disableMod(id) {
+export function disableAccountMod(id) {
 	delete settings.enabledDistributions[id]
-	save()
+	saveAccount()
 }
 
-export function distribution(id) {
+export function accountDistribution(id) {
 	return settings.enabledDistributions[id]
 }
 
-function save() {
+function saveAccount() {
 	console.debug("Saving account settings", settings)
-	set(settings)
+	setAccount(settings)
 }
 
 ;(async function () {
 	await waitFor(() => Player && ServerIsLoggedIn())
-	settings = get()
+	settings = getAccount()
 	console.debug("Loaded account settings", settings)
 })()
