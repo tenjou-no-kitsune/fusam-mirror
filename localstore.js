@@ -55,6 +55,6 @@ export function browserDistribution(id) {
 }
 
 function saveBrowser() {
-	console.debug("Saving browser settings", settings)
+	console.debug("[FUSAM]: Saving browser settings", settings)
 	setBrowser(settings)
 }

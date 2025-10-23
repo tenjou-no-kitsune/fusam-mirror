@@ -13,7 +13,7 @@ const lastSessionHadError = localStorage?.getItem?.(lastSessionStatusKey) === "e
 setLastSessionStatus("ok")
 
 window.addEventListener("error", (event) => {
-	console.error("Uncaught error", event)
+	console.error("[FUSAM]: Uncaught error", event)
 	setLastError(
 		JSON.stringify({
 			message: event.message,
@@ -41,7 +41,7 @@ export async function loadAddons() {
 	if (lastSessionHadError && firstLoad) {
 		firstLoad = false
 		const lastError = localStorage?.getItem?.(lastErrorKey)
-		console.warn("The previous session had an error", lastError)
+		console.warn("[FUSAM]: The previous session had an error", lastError)
 		const [answer] = await showAsyncModal({
 			prompt: "The previous session had an error. Do you want to skip loading addons?",
 			buttons: {
@@ -79,11 +79,11 @@ async function load(settings) {
 		const addon = getAddon(id)
 		const version = getAddonVersion(id, distribution)
 		if (!version) {
-			console.warn(`Addon ${id} or its distribution ${distribution} not found`)
+			console.warn(`[FUSAM]: Addon ${id} or its distribution ${distribution} not found`)
 			window.FUSAM.addons[id].status = "error"
 			continue
 		}
-		console.debug(`Loading addon ${id} from ${distribution}`)
+		console.debug(`[FUSAM]: Loading addon ${id} from ${distribution}`)
 		;(async () => {
 			try {
 				const URL = version.source + (addon.noCacheBusting ? "" : `?v=${Date.now()}`)
@@ -102,7 +102,7 @@ async function load(settings) {
 						break
 				}
 			} catch (e) {
-				console.error(`Failed to load addon ${id}`, e)
+				console.error(`[FUSAM]: Failed to load addon ${id}`, e)
 				window.FUSAM.addons[id].status = "error"
 				setLastError(`Failed to load addon ${id}: ${e}`)
 			}

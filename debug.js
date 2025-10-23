@@ -26,7 +26,7 @@ export async function generateDebugReport(addon) {
 			saveBlobAsFile(new Blob([debugBlob]), filename(addon, now))
 			return
 		}
-		console.warn(`Addon ${addon} not found`)
+		console.warn(`[FUSAM]: Addon ${addon} not found`)
 		return
 	}
 

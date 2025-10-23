@@ -84,12 +84,12 @@ export function accountDistribution(id) {
 }
 
 function saveAccount() {
-	console.debug("Saving account settings", settings)
+	console.debug("[FUSAM]: Saving account settings", settings)
 	setAccount(settings)
 }
 
 ;(async function () {
 	await waitFor(() => Player && ServerIsLoggedIn())
 	settings = getAccount()
-	console.debug("Loaded account settings", settings)
+	console.debug("[FUSAM]: Loaded account settings", settings)
 })()
