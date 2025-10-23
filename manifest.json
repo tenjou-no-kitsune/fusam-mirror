@@ -384,7 +384,7 @@
 				"en":"Echo's Clothing Mod",
 				"cn": "服装拓展"
 			},
-			"description": "Expansion on clothing options",
+			"description": "Adds more clothing options and custom slots in the wardrobe. Wait for the 🍔 on the login character's head to make sure it loaded fully!",
 			"author": "Echo",
 			"repository": "https://github.com/SugarChain-Studio/echo-clothing-ext",
 			"tags": ["expansion","browser-only"],
