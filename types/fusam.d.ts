@@ -36,7 +36,7 @@ type FUSAMPublicAPI = {
 
 type FUSAMAddonState = {
 	distribution: string
-	status: "loading" | "loaded" | "error"
+	status: "loading" | "loaded" | "error" | "missing"
 }
 
 export type FUSAMSettings = {

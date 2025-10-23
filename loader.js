@@ -58,10 +58,24 @@ export async function loadAddons() {
 	await updateManifest()
 
 	// Load device addons immediately, then wait for a login to happen
-	await load(getBrowser().enabledDistributions)
+	const browserSettings = getBrowser();
+	await load(browserSettings.enabledDistributions)
 
 	await waitFor(() => playerSettingsLoaded())
-	await load(getAccount().enabledDistributions)
+	const accountSettings = getAccount();
+	await load(accountSettings.enabledDistributions, true)
+
+	const missingAddonsIDs = Object.entries(window.FUSAM.addons).filter(([id, state]) => state.status === "missing").map(([id]) => id)
+	if (missingAddonsIDs.length) {
+		showAsyncModal({
+			prompt: `The following addons found in your configuration couldn't be found, they'll be removed:\n${missingAddonsIDs}`,
+			buttons: { submit: "OK" },
+		})
+		for (const id of missingAddonsIDs) {
+			delete browserSettings.enabledDistributions[id]
+			delete accountSettings.enabledDistributions[id]
+		}
+	}
 }
 
 /**
@@ -80,7 +94,7 @@ async function load(settings) {
 		const version = getAddonVersion(id, distribution)
 		if (!version) {
 			console.warn(`[FUSAM]: Addon ${id} or its distribution ${distribution} not found`)
-			window.FUSAM.addons[id].status = "error"
+			window.FUSAM.addons[id].status = "missing"
 			continue
 		}
 		console.debug(`[FUSAM]: Loading addon ${id} from ${distribution}`)
