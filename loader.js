@@ -36,6 +36,13 @@ export function getLastError() {
 	return localStorage?.getItem?.(lastErrorKey)
 }
 
+/**
+ * @param {Window["FUSAM"]["addons"][""]["status"]} status
+ */
+function getLoadedAddonsByStatus(status) {
+	return Object.entries(window.FUSAM.addons).filter(([_, state]) => state.status === status).map(([id]) => id)
+}
+
 export async function loadAddons() {
 	if (skipLoading) return
 	if (lastSessionHadError && firstLoad) {
@@ -65,10 +72,10 @@ export async function loadAddons() {
 	const accountSettings = getAccount();
 	await load(accountSettings.enabledDistributions, true)
 
-	const missingAddonsIDs = Object.entries(window.FUSAM.addons).filter(([id, state]) => state.status === "missing").map(([id]) => id)
+	const missingAddonsIDs = getLoadedAddonsByStatus("missing")
 	if (missingAddonsIDs.length) {
 		showAsyncModal({
-			prompt: `The following addons found in your configuration couldn't be found, they'll be removed:\n${missingAddonsIDs}`,
+			prompt: `The following addons found in your configuration couldn't be found, they'll be removed:\n${missingAddonsIDs.join(", ")}`,
 			buttons: { submit: "OK" },
 		})
 		for (const id of missingAddonsIDs) {
