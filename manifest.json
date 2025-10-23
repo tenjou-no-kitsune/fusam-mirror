@@ -7,7 +7,7 @@
 			"description": "Smarter, extensible facial animation and posing engine, instant messaging, appearance layering and a collection of quality of life improvements - A fork of FBC 5.8",
 			"author": "Sidious & Stella",
 			"repository": "https://github.com/KittenApps/WCE",
-			"tags": ["cheats", "enhancements", "automation"],
+			"tags": ["cheats", "enhancements", "automation","recommended"],
 			"type": "module",
 			"noCacheBusting": true,
 			"website": "https://wce-docs.vercel.app",
@@ -29,7 +29,7 @@
 			"description": "Adds rules, curses, and more to enhance D/s play alongside a handful of quality of life improvements",
 			"author": "Jomshir98 & Claudia",
 			"repository": "https://github.com/Jomshir98/bondage-club-extended",
-			"tags": ["enhancements", "expansion"],
+			"tags": ["enhancements", "expansion","recommended"],
 			"type": "script",
 			"website": "https://jomshir98.github.io/bondage-club-extended/",
 			"versions": [
@@ -96,7 +96,7 @@
 					"source": "https://zoe-64.github.io/ABCL/versions/beta/abcl.js"
 				},
 				{
-					"distribution": "unstable",
+					"distribution": "dev",
 					"source": "https://zoe-64.github.io/ABCL/versions/unstable/abcl.js"
 				}
 			]
@@ -489,11 +489,11 @@
 			"type": "script",
 			"versions": [
 				{
-					"distribution": "Stable",
+					"distribution": "stable",
 					"source": "https://sin-1337.github.io/CRABS/Stable/bundle.js"
 				},
 				{
-					"distribution": "Beta",
+					"distribution": "beta",
 					"source": "https://sin-1337.github.io/CRABS/Beta/bundle.js"
 				}
 			]
