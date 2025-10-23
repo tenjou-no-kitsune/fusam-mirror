@@ -250,6 +250,9 @@ async function drawAddonManager() {
 	function drawEntry(entry) {
 		const device = browserDistribution(entry.id)
 		const account = accountDistribution(entry.id)
+		const isBrowserOnly = entry.tags.includes("browser-only")
+		const canAccount = playerSettingsLoaded() && !isBrowserOnly
+		const accountTooltip = !playerSettingsLoaded() ? "You need to be logged in" : isBrowserOnly ? "Can only be loaded on Browser" : ""
 		const debuggable = canDebug(entry.id)
 		const useIcons = true
 
@@ -277,7 +280,7 @@ async function drawAddonManager() {
 						</div>
 						<div class="fusam-addon-entry-version-account">
 							<label for="${entry.id}-account">Account</label>
-							<select id="${entry.id}-account" data-addon="${entry.id}" ${!playerSettingsLoaded() ? "disabled" : ""}>
+							<select id="${entry.id}-account" data-addon="${entry.id}" ${!canAccount ? "disabled" : ""} title="${accountTooltip}">
 							<option value="none" selected>None</option>
 								${entry.versions.map((version) => drawVersionOption(version, account === version.distribution))}
 							</select>

@@ -387,7 +387,7 @@
 			"description": "Expansion on clothing options",
 			"author": "Echo",
 			"repository": "https://github.com/SugarChain-Studio/echo-clothing-ext",
-			"tags": ["expansion"],
+			"tags": ["expansion","browser-only"],
 			"website": "https://github.com/emdsa2/-mod/wiki",
 			"type": "script",
 			"versions": [
@@ -410,7 +410,7 @@
 			"description": "Expansion on activity options",
 			"author": "Echo",
 			"repository": "https://github.com/SugarChain-Studio/echo-activity-ext",
-			"tags": ["expansion"],
+			"tags": ["expansion","browser-only"],
 			"website": "https://github.com/emdsa2/-mod/wiki",
 			"type": "script",
 			"versions": [

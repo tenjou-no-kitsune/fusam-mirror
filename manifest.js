@@ -19,7 +19,7 @@
 import { BaseURL } from "./config.js"
 import { getUserLanguages } from "./ui.js";
 
-const MANIFEST_TAGS = Object.freeze(/** @type {const} */ (['automation', 'cheats', 'enhancements', 'expansion', 'recommended']));
+const MANIFEST_TAGS = Object.freeze(/** @type {const} */ (['automation', 'browser-only', 'cheats', 'enhancements', 'expansion', 'recommended']));
 
 /**
  * @typedef {typeof MANIFEST_TAGS[*]} ManifestTag
