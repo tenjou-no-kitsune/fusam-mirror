@@ -86,21 +86,8 @@ async function load(settings) {
 		console.debug(`[FUSAM]: Loading addon ${id} from ${distribution}`)
 		;(async () => {
 			try {
-				const URL = version.source + (addon.noCacheBusting ? "" : `?v=${Date.now()}`)
-				switch (addon.type) {
-					case "eval":
-						await evalAddon(URL, version.source)
-						window.FUSAM.addons[id].status = "loaded"
-						break
-					case "module":
-						await import(URL)
-						window.FUSAM.addons[id].status = "loaded"
-						break
-					case "script":
-						await scriptAddon(URL, "text/javascript")
-						window.FUSAM.addons[id].status = "loaded"
-						break
-				}
+				addon.load(version);
+				window.FUSAM.addons[id].status = "loaded"
 			} catch (e) {
 				console.error(`[FUSAM]: Failed to load addon ${id}`, e)
 				window.FUSAM.addons[id].status = "error"
@@ -115,7 +102,7 @@ async function load(settings) {
  * @param {'module' | 'text/javascript'} type Type of the script
  * @return {Promise<Event>} [onload] Callback when the script is loaded
  */
-function scriptAddon(url, type) {
+export function scriptAddon(url, type) {
 	return new Promise((resolve, reject) => {
 		const script = document.createElement("script")
 		script.type = type
@@ -127,7 +114,7 @@ function scriptAddon(url, type) {
 	})
 }
 
-async function evalAddon(url, source) {
+export async function evalAddon(url, source) {
 	await fetch(url)
 		.then((resp) => resp.text())
 		.then((resp) => {

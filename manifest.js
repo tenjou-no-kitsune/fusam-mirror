@@ -17,6 +17,7 @@
  */
 
 import { BaseURL } from "./config.js"
+import { evalAddon, scriptAddon } from "./loader.js";
 import { getUserLanguages } from "./ui.js";
 
 const MANIFEST_TAGS = Object.freeze(/** @type {const} */ (['automation', 'browser-only', 'cheats', 'enhancements', 'expansion', 'recommended']));
@@ -191,6 +192,25 @@ export class ManifestEntry {
 			if (this.#description[lang]) return this.#description[lang];
 		}
 		return this.#description["en"];
+	}
+
+	/**
+	 *
+	 * @param {ManifestVersion} version
+	 */
+	async load(version) {
+		const URL = version.source + (this.noCacheBusting ? "" : `?v=${Date.now()}`)
+			switch (this.type) {
+				case "eval":
+					await evalAddon(URL, version.source)
+					break
+				case "module":
+					await import(URL)
+					break
+				case "script":
+					await scriptAddon(URL, "text/javascript")
+					break
+			}
 	}
 }
 
