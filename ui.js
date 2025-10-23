@@ -250,9 +250,11 @@ async function drawAddonManager() {
 	function drawEntry(entry) {
 		const device = browserDistribution(entry.id)
 		const account = accountDistribution(entry.id)
-		const isBrowserOnly = entry.tags.includes("browser-only")
-		const canAccount = playerSettingsLoaded() && !isBrowserOnly
-		const accountTooltip = !playerSettingsLoaded() ? "You need to be logged in" : isBrowserOnly ? "Can only be loaded on Browser" : ""
+		const canAccount = playerSettingsLoaded() && !entry.browserOnly
+		const accountTooltip = !playerSettingsLoaded()
+			? "You need to be logged in"
+			: entry.browserOnly
+				? "Can only be loaded on Browser" : ""
 		const debuggable = canDebug(entry.id)
 		const useIcons = true
 

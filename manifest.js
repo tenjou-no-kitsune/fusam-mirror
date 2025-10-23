@@ -194,6 +194,10 @@ export class ManifestEntry {
 		return this.#description["en"];
 	}
 
+	get browserOnly() {
+		return this.tags.includes("browser-only")
+	}
+
 	/**
 	 *
 	 * @param {ManifestVersion} version
