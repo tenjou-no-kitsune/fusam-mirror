@@ -1,7 +1,7 @@
-import { waitFor } from "./delay.js"
-import { getBrowser } from "./localstore.js"
+import { sleep, waitFor } from "./delay.js"
+import { enableBrowserMod, getBrowser } from "./localstore.js"
 import { getAddon, getAddonVersion, updateManifest } from "./manifest.js"
-import { getAccount, playerSettingsLoaded } from "./playerstore.js"
+import { disableAccountMod, getAccount, playerSettingsLoaded } from "./playerstore.js"
 import { showAsyncModal } from "./ui.js"
 
 let skipLoading = false
@@ -83,12 +83,31 @@ export async function loadAddons() {
 			delete accountSettings.enabledDistributions[id]
 		}
 	}
+	const browserOnlyAddonsIDs = getLoadedAddonsByStatus("browser-only")
+	if (browserOnlyAddonsIDs.length) {
+		const res = await showAsyncModal({
+			prompt: `The following addons are loaded by your account, but they're marked to only be compatible with a Browser-level load. They'll be moved to the proper level, but you'll have to refresh to fix the issue:\n:${browserOnlyAddonsIDs.join(", ")}`,
+			buttons: { submit: "Fix and Refresh", ignore: "Ignore" },
+		})
+		if (res[0] === "submit") {
+			for (const id of browserOnlyAddonsIDs) {
+				const val = accountSettings.enabledDistributions[id]
+				disableAccountMod(id);
+				enableBrowserMod(id, val)
+				await sleep(4000) // Give some time for the update message to round-trip
+				// @ts-expect-error
+				window.location = window.location
+			}
+		}
+	}
+
 }
 
 /**
  * @param {Record<string, string>} settings
+ * @param {boolean} [accountLoad=false]
  */
-async function load(settings) {
+async function load(settings, accountLoad = false) {
 	for (const [id, distribution] of Object.entries(settings)) {
 		if (id in window.FUSAM.addons) continue
 
@@ -102,6 +121,11 @@ async function load(settings) {
 		if (!version) {
 			console.warn(`[FUSAM]: Addon ${id} or its distribution ${distribution} not found`)
 			window.FUSAM.addons[id].status = "missing"
+			continue
+		}
+		if (addon.browserOnly && accountLoad) {
+			console.warn(`[FUSAM]: Browser-only addon ${id} found in account list`)
+			window.FUSAM.addons[id].status = "browser-only"
 			continue
 		}
 		console.debug(`[FUSAM]: Loading addon ${id} from ${distribution}`)

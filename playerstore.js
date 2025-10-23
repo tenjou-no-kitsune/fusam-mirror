@@ -17,6 +17,7 @@
  */
 
 import { waitFor } from "./delay.js"
+import { getAddon } from "./manifest.js"
 import { isSettingsV1 } from "./typeasserts.js"
 
 let loaded = false
@@ -70,6 +71,7 @@ function setAccount(value) {
 }
 
 export function enableAccountMod(id, distribution) {
+	if (getAddon(id).browserOnly) return
 	settings.enabledDistributions[id] = distribution
 	saveAccount()
 }
