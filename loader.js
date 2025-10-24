@@ -1,5 +1,5 @@
 import { sleep, waitFor } from "./delay.js"
-import { enableBrowserMod, getBrowser } from "./localstore.js"
+import { disableBrowserMod, enableBrowserMod, getBrowser } from "./localstore.js"
 import { getAddon, getAddonVersion, updateManifest } from "./manifest.js"
 import { disableAccountMod, getAccount, playerSettingsLoaded } from "./playerstore.js"
 import { showAsyncModal } from "./ui.js"
@@ -79,8 +79,8 @@ export async function loadAddons() {
 			buttons: { submit: "OK" },
 		})
 		for (const id of missingAddonsIDs) {
-			delete browserSettings.enabledDistributions[id]
-			delete accountSettings.enabledDistributions[id]
+			disableAccountMod(id)
+			disableBrowserMod(id)
 		}
 	}
 	const browserOnlyAddonsIDs = getLoadedAddonsByStatus("browser-only")
