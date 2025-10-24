@@ -43,6 +43,18 @@ function getLoadedAddonsByStatus(status) {
 	return Object.entries(window.FUSAM.addons).filter(([_, state]) => state.status === status).map(([id]) => id)
 }
 
+/**
+ * @param {import("./types/fusam.js").FUSAMSettings} settings
+ */
+function addonFixup(settings) {
+	if (settings.enabledDistributions["ABCL"] === "unstable") {
+		settings.enabledDistributions["ABCL"] = "dev"
+	}
+	if (settings.enabledDistributions["CRABS"]) {
+		settings.enabledDistributions["CRABS"] = settings.enabledDistributions["CRABS"].toLowerCase()
+	}
+}
+
 export async function loadAddons() {
 	if (skipLoading) return
 	if (lastSessionHadError && firstLoad) {
@@ -66,10 +78,12 @@ export async function loadAddons() {
 
 	// Load device addons immediately, then wait for a login to happen
 	const browserSettings = getBrowser();
+	addonFixup(browserSettings)
 	await load(browserSettings.enabledDistributions)
 
 	await waitFor(() => playerSettingsLoaded())
 	const accountSettings = getAccount();
+	addonFixup(accountSettings)
 	await load(accountSettings.enabledDistributions, true)
 
 	const missingAddonsIDs = getLoadedAddonsByStatus("missing")
