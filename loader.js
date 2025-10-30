@@ -89,7 +89,7 @@ export async function loadAddons() {
 	const missingAddonsIDs = getLoadedAddonsByStatus("missing")
 	if (missingAddonsIDs.length) {
 		showAsyncModal({
-			prompt: `The following addons from in your configuration couldn't be found in the manifest, they'll be removed:\n${missingAddonsIDs.join(", ")}`,
+			prompt: `The following addons from your configuration couldn't be found in the manifest, they'll be removed:\n${missingAddonsIDs.join(", ")}`,
 			buttons: { submit: "OK" },
 		})
 		for (const id of missingAddonsIDs) {
