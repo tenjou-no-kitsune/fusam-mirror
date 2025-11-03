@@ -109,11 +109,11 @@ export async function loadAddons() {
 				const val = accountSettings.enabledDistributions[id]
 				disableAccountMod(id)
 				enableBrowserMod(id, val)
-				ServerPlayerExtensionSettingsSync("FUSAMSettings")
-				await sleep(4000) // Give some time for the update message to round-trip
-				// @ts-expect-error
-				window.location = window.location
 			}
+			ServerPlayerExtensionSettingsSync("FUSAMSettings")
+			await sleep(4000) // Give some time for the update message to round-trip
+			// @ts-expect-error
+			window.location = window.location
 		}
 	}
 
