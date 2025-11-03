@@ -96,6 +96,7 @@ export async function loadAddons() {
 			disableAccountMod(id)
 			disableBrowserMod(id)
 		}
+		ServerPlayerExtensionSettingsSync("FUSAMSettings")
 	}
 	const browserOnlyAddonsIDs = getLoadedAddonsByStatus("browser-only")
 	if (browserOnlyAddonsIDs.length) {
@@ -106,8 +107,9 @@ export async function loadAddons() {
 		if (res[0] === "submit") {
 			for (const id of browserOnlyAddonsIDs) {
 				const val = accountSettings.enabledDistributions[id]
-				disableAccountMod(id);
+				disableAccountMod(id)
 				enableBrowserMod(id, val)
+				ServerPlayerExtensionSettingsSync("FUSAMSettings")
 				await sleep(4000) // Give some time for the update message to round-trip
 				// @ts-expect-error
 				window.location = window.location
