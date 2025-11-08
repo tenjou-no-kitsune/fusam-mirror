@@ -1,7 +1,7 @@
 import { sleep, waitFor } from "./delay.js"
 import { disableBrowserMod, enableBrowserMod, getBrowser } from "./localstore.js"
 import { getAddon, getAddonVersion, updateManifest } from "./manifest.js"
-import { disableAccountMod, getAccount, playerSettingsLoaded } from "./playerstore.js"
+import { disableAccountMod, getAccount, playerSettingsLoaded, saveAccount } from "./playerstore.js"
 import { showAsyncModal } from "./ui.js"
 
 let skipLoading = false
@@ -87,6 +87,8 @@ export async function loadAddons() {
 	await load(accountSettings.enabledDistributions, true)
 
 	const missingAddonsIDs = getLoadedAddonsByStatus("missing")
+	let shouldSave = false
+	let shouldReload = false
 	if (missingAddonsIDs.length) {
 		showAsyncModal({
 			prompt: `The following addons from your configuration couldn't be found in the manifest, they'll be removed:\n${missingAddonsIDs.join(", ")}`,
@@ -95,8 +97,8 @@ export async function loadAddons() {
 		for (const id of missingAddonsIDs) {
 			disableAccountMod(id)
 			disableBrowserMod(id)
+			shouldSave = true
 		}
-		ServerPlayerExtensionSettingsSync("FUSAMSettings")
 	}
 	const browserOnlyAddonsIDs = getLoadedAddonsByStatus("browser-only")
 	if (browserOnlyAddonsIDs.length) {
@@ -110,7 +112,12 @@ export async function loadAddons() {
 				disableAccountMod(id)
 				enableBrowserMod(id, val)
 			}
-			ServerPlayerExtensionSettingsSync("FUSAMSettings")
+			shouldReload = true
+		}
+	}
+	if (shouldSave || shouldReload) {
+		saveAccount()
+		if (shouldReload) {
 			await sleep(4000) // Give some time for the update message to round-trip
 			// @ts-expect-error
 			window.location = window.location

@@ -31,6 +31,7 @@ import {
 	enableAccountMod,
 	accountDistribution,
 	playerSettingsLoaded,
+	saveAccount,
 } from "./playerstore.js"
 import { HOOK_PRIORITY, SDK } from "./vendor/bcmodsdk.js"
 import { render, signal } from "./vendor/reef.js"
@@ -387,7 +388,7 @@ function hideAddonManager() {
 	document.removeEventListener("keydown", documentKeyDown)
 	document.removeEventListener("paste", documentPaste)
 	if (playerSettingsLoaded()) {
-		ServerPlayerExtensionSettingsSync("FUSAMSettings")
+		saveAccount()
 	}
 	loadAddons()
 }

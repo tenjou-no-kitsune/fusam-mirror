@@ -45,7 +45,7 @@ export function getAccount() {
 		)
 		Player.ExtensionSettings.FUSAMSettings = Player.OnlineSettings.FUSAMSettings
 
-		ServerPlayerExtensionSettingsSync("FUSAMSettings")
+		saveAccount();
 
 		delete Player.OnlineSettings?.FUSAMSettings
 		ServerAccountUpdate.QueueData({
@@ -66,28 +66,23 @@ export function getAccount() {
 	}
 }
 
-function setAccount(value) {
-	Player.ExtensionSettings.FUSAMSettings = LZString.compressToBase64(JSON.stringify(value))
-}
-
 export function enableAccountMod(id, distribution) {
 	if (getAddon(id).browserOnly) return
 	settings.enabledDistributions[id] = distribution
-	saveAccount()
 }
 
 export function disableAccountMod(id) {
 	delete settings.enabledDistributions[id]
-	saveAccount()
 }
 
 export function accountDistribution(id) {
 	return settings.enabledDistributions[id]
 }
 
-function saveAccount() {
+export function saveAccount() {
 	console.debug("[FUSAM]: Saving account settings", settings)
-	setAccount(settings)
+	Player.ExtensionSettings.FUSAMSettings = LZString.compressToBase64(JSON.stringify(settings))
+	ServerPlayerExtensionSettingsSync("FUSAMSettings")
 }
 
 ;(async function () {
