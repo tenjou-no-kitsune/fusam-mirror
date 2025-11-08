@@ -155,7 +155,7 @@ async function load(settings, accountLoad = false) {
 		;(async () => {
 			try {
 				addon.load(version);
-				window.FUSAM.addons[id].status = "loaded"
+				window.FUSAM.addons[id].status ??= "loaded"
 			} catch (e) {
 				console.error(`[FUSAM]: Failed to load addon ${id}`, e)
 				window.FUSAM.addons[id].status = "error"
