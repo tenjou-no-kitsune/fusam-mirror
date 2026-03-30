@@ -7,7 +7,7 @@
 			"description": "Smarter, extensible facial animation and posing engine, instant messaging, appearance layering and a collection of quality of life improvements - A fork of FBC 5.8",
 			"author": "Sidious & Stella",
 			"repository": "https://github.com/KittenApps/WCE",
-			"tags": ["cheats", "enhancements", "automation","recommended"],
+			"tags": ["cheats", "enhancements", "automation", "recommended"],
 			"type": "module",
 			"noCacheBusting": true,
 			"website": "https://wce-docs.vercel.app",
@@ -29,7 +29,7 @@
 			"description": "Adds rules, curses, and more to enhance D/s play alongside a handful of quality of life improvements",
 			"author": "Jomshir98 & Claudia",
 			"repository": "https://github.com/Jomshir98/bondage-club-extended",
-			"tags": ["enhancements", "expansion","recommended"],
+			"tags": ["enhancements", "expansion", "recommended"],
 			"type": "script",
 			"website": "https://jomshir98.github.io/bondage-club-extended/",
 			"versions": [
@@ -381,13 +381,13 @@
 		{
 			"id": "echocloth",
 			"name": {
-				"en":"Echo's Clothing Mod",
+				"en": "Echo's Clothing Mod",
 				"cn": "服装拓展"
 			},
 			"description": "Adds more clothing options and custom slots in the wardrobe. Wait for the 🍔 on the login character's head to make sure it loaded fully!",
 			"author": "Echo",
 			"repository": "https://github.com/SugarChain-Studio/echo-clothing-ext",
-			"tags": ["expansion","browser-only"],
+			"tags": ["expansion", "browser-only"],
 			"website": "https://github.com/emdsa2/-mod/wiki",
 			"type": "script",
 			"versions": [
@@ -410,7 +410,7 @@
 			"description": "Expansion on activity options",
 			"author": "Echo",
 			"repository": "https://github.com/SugarChain-Studio/echo-activity-ext",
-			"tags": ["expansion","browser-only"],
+			"tags": ["expansion", "browser-only"],
 			"website": "https://github.com/emdsa2/-mod/wiki",
 			"type": "script",
 			"versions": [

@@ -40,7 +40,9 @@ export function getLastError() {
  * @param {Window["FUSAM"]["addons"][""]["status"]} status
  */
 function getLoadedAddonsByStatus(status) {
-	return Object.entries(window.FUSAM.addons).filter(([_, state]) => state.status === status).map(([id]) => id)
+	return Object.entries(window.FUSAM.addons)
+		.filter(([_, state]) => state.status === status)
+		.map(([id]) => id)
 }
 
 /**
@@ -77,12 +79,12 @@ export async function loadAddons() {
 	await updateManifest()
 
 	// Load device addons immediately, then wait for a login to happen
-	const browserSettings = getBrowser();
+	const browserSettings = getBrowser()
 	addonFixup(browserSettings)
 	await load(browserSettings.enabledDistributions)
 
 	await waitFor(() => playerSettingsLoaded())
-	const accountSettings = getAccount();
+	const accountSettings = getAccount()
 	addonFixup(accountSettings)
 	await load(accountSettings.enabledDistributions, true)
 
@@ -123,7 +125,6 @@ export async function loadAddons() {
 			window.location = window.location
 		}
 	}
-
 }
 
 /**
@@ -154,7 +155,7 @@ async function load(settings, accountLoad = false) {
 		console.debug(`[FUSAM]: Loading addon ${id} from ${distribution}`)
 		;(async () => {
 			try {
-				addon.load(version);
+				addon.load(version)
 				window.FUSAM.addons[id].status ??= "loaded"
 			} catch (e) {
 				console.error(`[FUSAM]: Failed to load addon ${id}`, e)

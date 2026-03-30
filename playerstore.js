@@ -45,7 +45,7 @@ export function getAccount() {
 		)
 		Player.ExtensionSettings.FUSAMSettings = Player.OnlineSettings.FUSAMSettings
 
-		saveAccount();
+		saveAccount()
 
 		delete Player.OnlineSettings?.FUSAMSettings
 		ServerAccountUpdate.QueueData({

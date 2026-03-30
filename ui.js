@@ -20,11 +20,7 @@ import { BaseURL } from "./config.js"
 import { canDebug, generateDebugReport } from "./debug.js"
 import { waitFor } from "./delay.js"
 import { loadAddons } from "./loader.js"
-import {
-	disableBrowserMod,
-	enableBrowserMod,
-	browserDistribution,
-} from "./localstore.js"
+import { disableBrowserMod, enableBrowserMod, browserDistribution } from "./localstore.js"
 import { getManifest } from "./manifest.js"
 import {
 	disableAccountMod,
@@ -255,7 +251,8 @@ async function drawAddonManager() {
 		const accountTooltip = !playerSettingsLoaded()
 			? "You need to be logged in"
 			: entry.browserOnly
-				? "Can only be loaded on Browser" : ""
+				? "Can only be loaded on Browser"
+				: ""
 		const debuggable = canDebug(entry.id)
 		const useIcons = true
 
@@ -591,5 +588,9 @@ export function showAsyncModal(opts) {
 }
 
 export function getUserLanguages() {
-	return navigator.languages.reduce((stack, val) => { stack.push(val); stack.push(val.split("-")[0]); return stack}, [])
+	return navigator.languages.reduce((stack, val) => {
+		stack.push(val)
+		stack.push(val.split("-")[0])
+		return stack
+	}, [])
 }
