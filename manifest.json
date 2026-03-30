@@ -281,7 +281,7 @@
 			"description": "A large collection of cheats, quality of life improvements, and a moaner script",
 			"author": "Nemesea",
 			"repository": "https://github.com/tetris245/ULTRAbc",
-			"tags": ["cheats", "enhancements", "automation"],
+			"tags": ["cheats", "enhancements", "automation", "browser-only"],
 			"type": "script",
 			"versions": [
 				{
