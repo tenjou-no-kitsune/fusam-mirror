@@ -581,6 +581,10 @@
 				{
 					"distribution": "stable",
 					"source": "https://nft-dc4430.gitlab.io/NFT.js"
+				},
+				{
+					"distribution": "dev",
+					"source": "https://nft-dc4430.gitlab.io/NFT-dev.js"
 				}
 			]
 		}
