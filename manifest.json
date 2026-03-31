@@ -568,6 +568,21 @@
 					"source": "https://xinlian132243.github.io/BCMod/BC_LianChat.user.js"
 				}
 			]
+		},
+		{
+			"id": "NFT",
+			"name": "NFT - Nest of Fluffy Treasures",
+			"description": "Save and load ItemHandheld / ItemMisc items with full appearance, crafter and property restore.",
+			"author": "Nicole, Felix, Tifa",
+			"repository": "https://gitlab.com/nicole-bc-group/NFT/",
+			"tags": ["expansion"],
+			"type": "script",
+			"versions": [
+				{
+					"distribution": "stable",
+					"source": "https://nft-dc4430.gitlab.io/NFT.js"
+				}
+			]
 		}
 	]
 }
