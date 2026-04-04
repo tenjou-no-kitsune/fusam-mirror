@@ -487,11 +487,11 @@
 		{
 			"id": "CRABS",
 			"icon": "https://sin-1337.github.io/CRABS/images/CRABS_Logo.png",
-			"name": "Crazy Roster Addon By Sin (CRABS)",
-			"description": "Adds a room roster you can summon with /roster or /players that includes several interactive tools and assists you with managing a room",
+			"name": "CRABS (Crazy Roster Addon By Sin)",
+			"description": "Adds a dynamic, stowable room roster (via /roster or /crabs) designed to streamline your gameplay with live player sorting, advanced map tracking, global Whisper+, and interactive management tools.",
 			"author": "Sin",
 			"repository": "https://github.com/sin-1337/CRABS",
-			"tags": ["expansion"],
+			"tags": ["enhancements", "expansion"],
 			"type": "script",
 			"versions": [
 				{
