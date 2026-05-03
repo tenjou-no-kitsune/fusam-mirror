@@ -1,3 +1,25 @@
+> [!IMPORTANT]
+> THIS IS A "MIRROR" WITH URL CHANGES FOR ACCESSIBILITY  
+> for licensing, please refer to the [upstream original repository (FUSAM)](https://gitlab.com/Sidiousious/bc-addon-loader)!
+>
+> this version of the repository exists for those who cannot load from GitLab for whatever reason...
+
+> [!CAUTION]
+> if you have no issues accessing [sidiousious.gitlab.io](https://sidiousious.gitlab.io/bc-addon-loader/) please use that instead!  
+> this version of FUSAM runs purely on GitHub Pages and depends on me to update it to match upstream
+
+> [!WARNING]
+> again... another warning... use this at your own risk, i'm not responsible for any mishap if used improperly  
+> my suggestions are to load this through the instructions on [tenjou-no-kitsune.github.io/fusam-mirror](https://tenjou-no-kitsune.github.io/fusam-mirror)
+
+> [!NOTE]  
+> this `github-ver` branch serves as a GitHub Pages hosted "mirror" of FUSAM
+> 
+> FUSAM url change: `sidiousious.gitlab.io/bc-addon-loader` => `tenjou-no-kitsune.github.io/fusam-mirror`
+> 
+> manifest changes:  
+> - WCE: `wce.netlify.app` => `tenjou-no-kitsune.github.io/WCE`
+
 # BC Addon Manager
 
 One stop shop for addon installation for BC.
