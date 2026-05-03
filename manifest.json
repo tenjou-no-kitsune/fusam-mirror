@@ -14,11 +14,11 @@
 			"versions": [
 				{
 					"distribution": "stable",
-					"source": "https://wce.netlify.app/wce.js"
+					"source": "https://tenjou-no-kitsune.github.io/WCE/wce.js"
 				},
 				{
 					"distribution": "dev",
-					"source": "https://beta--wce.netlify.app/wce.js"
+					"source": "https://tenjou-no-kitsune.github.io/WCE/beta/wce.js"
 				}
 			]
 		},
