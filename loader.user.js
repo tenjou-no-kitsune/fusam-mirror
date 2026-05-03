@@ -4,7 +4,7 @@
 // @version 1.0.5
 // @description A loader for the FUSAM
 // @author Sidious
-// @downloadURL https://sidiousious.gitlab.io/bc-addon-loader/loader.user.js
+// @downloadURL https://tenjou-no-kitsune.github.io/fusam-mirror/loader.user.js
 // @match https://*.bondageprojects.elementfx.com/R*/*
 // @match https://*.bondage-europe.com/R*/*
 // @match https://*.bondageprojects.com/R*/*

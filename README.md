@@ -4,7 +4,7 @@ One stop shop for addon installation for BC.
 
 ## Users
 
-This provides you with a single interface to toggle addons developed by the community. [Installation instructions can be found here](https://sidiousious.gitlab.io/bc-addon-loader/).
+This provides you with a single interface to toggle addons developed by the community. [Installation instructions can be found here](https://tenjou-no-kitsune.github.io/fusam-mirror/).
 
 ## Developers
 

@@ -44,7 +44,7 @@
 		<a href="https://violentmonkey.github.io/" target="_blank">Violentmonkey</a>
 		or a compatible userscript runner<br />
 		2) Open following page and confirm script installation:
-		<a href="https://sidiousious.gitlab.io/bc-addon-loader/loader.user.js" target="_blank">link</a>, alternatively
+		<a href="https://tenjou-no-kitsune.github.io/fusam-mirror/loader.user.js" target="_blank">link</a>, alternatively
 		enter the link in "Install from URL" option on violentmonkey's dashboard.
 	</p>
 	<h2>(B) Manual bookmark loader (Desktop):</h2>
@@ -88,7 +88,7 @@
 	<script>
 		"use strict"
 		const bookmark =
-			'javascript:(function(){if(window.FUSAM===undefined){let n=document.createElement("script");n.type="module";n.setAttribute("src","https://sidiousious.gitlab.io/bc-addon-loader/fusam.js?_="+Date.now());document.head.appendChild(n);}})();'
+			'javascript:(function(){if(window.FUSAM===undefined){let n=document.createElement("script");n.type="module";n.setAttribute("src","https://tenjou-no-kitsune.github.io/fusam-mirror/fusam.js?_="+Date.now());document.head.appendChild(n);}})();'
 		for (const e of document.getElementsByClassName("bookmarklink")) {
 			if (e instanceof HTMLAnchorElement) {
 				e.href = bookmark
