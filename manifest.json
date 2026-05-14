@@ -599,11 +599,11 @@
 			"versions": [
 				{
 					"distribution": "stable",
-					"source": "https://raw.githubusercontent.com/NekoEmery/EmeryBC/master/dist/bundle.js"
+					"source": "https://nekoemery.github.io/EmeryBC/stable/bundle.js"
 				},
 				{
 					"distribution": "dev",
-					"source": "https://raw.githubusercontent.com/NekoEmery/EmeryBC/dev/dist/bundle.js"
+					"source": "https://nekoemery.github.io/EmeryBC/dev/bundle.js"
 				}
 			]
 		}
