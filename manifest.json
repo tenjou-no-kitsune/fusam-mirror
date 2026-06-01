@@ -606,6 +606,25 @@
 					"source": "https://nekoemery.github.io/EmeryBC/dev/bundle.js"
 				}
 			]
+		},
+		{
+			"id": "BCNeko",
+			"name": "Bondage Club Neko Chat Enhancer",
+			"description": "Catgirl chat enhancer with neko-style message conversion, chat decorations, kaomoji picker, quick roleplay actions, and color themes.",
+			"author": "QAQMOON",
+			"repository": "https://github.com/QAQMOON/meow-",
+			"tags": ["enhancements"],
+			"type": "script",
+			"versions": [
+				{
+					"distribution": "stable",
+					"source": "https://raw.githubusercontent.com/QAQMOON/meow-/main/dist/bondage-club-neko.runtime.js"
+				},
+				{
+					"distribution": "dev",
+					"source": "https://raw.githubusercontent.com/QAQMOON/meow-/main/dist/bondage-club-neko.dev.runtime.js"
+				}
+			]
 		}
 	]
 }
