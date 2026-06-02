@@ -614,7 +614,7 @@
 			"author": "QAQMOON",
 			"repository": "https://github.com/QAQMOON/meow-",
 			"tags": ["enhancements"],
-			"type": "script",
+			"type": "eval",
 			"versions": [
 				{
 					"distribution": "stable",
