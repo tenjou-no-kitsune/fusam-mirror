@@ -625,6 +625,36 @@
 					"source": "https://raw.githubusercontent.com/QAQMOON/meow-/main/dist/bondage-club-neko.dev.runtime.js"
 				}
 			]
+		},
+		{
+			"id": "AFC",
+			"name": "Abundantia Florum ─Chromatica─",
+			"description": "Extended lover framework featuring relationship progression, shared private rooms, integrated Heart Lock systems.",
+			"author": "Likolisu",
+			"repository": "https://github.com/awdrrawd/liko-Plugin-Repository",
+			"tags": ["expansion"],
+			"type": "script",
+			"versions": [
+				{
+					"distribution": "dev",
+					"source": "https://raw.githubusercontent.com/awdrrawd/liko-Plugin-Repository/main/Plugins/Liko-ACF.user.js"
+				}
+			]
+		},
+		{
+			"id": "FCM",
+			"name": "Friends and ChatRoom Manager",
+			"description": "Friends and chatroom enhancement toolkit with avatar display, relationship tracking, player search, and extended room utilities.",
+			"author": "Likolisu",
+			"repository": "https://github.com/awdrrawd/liko-Plugin-Repository",
+			"tags": ["expansion"],
+			"type": "script",
+			"versions": [
+				{
+					"distribution": "dev",
+					"source": "https://raw.githubusercontent.com/awdrrawd/liko-Plugin-Repository/main/Plugins/Liko-FCM.user.js"
+				}
+			]
 		}
 	]
 }
