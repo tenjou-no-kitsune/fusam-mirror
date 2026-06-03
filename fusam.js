@@ -17,6 +17,7 @@
  */
 
 import { registerDebugMethod, registerFUSAMDebugMethod } from "./debug.js"
+import { waitFor } from "./delay.js"
 import { loadAddons } from "./loader.js"
 import { updateManifest } from "./manifest.js"
 import { hookUI, showAsyncModal, showModal } from "./ui.js"
@@ -32,22 +33,8 @@ window.FUSAM = {
 	},
 }
 
-async function loadListener() {
-	if (window.GameReadyState?.load === undefined) {
-		// Things are FUBAR at this point
-		throw new Error("Failed to detect successful BC load")
-	} else {
-		await GameReadyState.load
-	}
-
-	hookUI()
-	await updateManifest()
-	loadAddons()
-	registerFUSAMDebugMethod()
-}
-
-if (document.readyState === "complete") {
-	loadListener()
-} else {
-	window.addEventListener("load", loadListener, { once: true })
-}
+await waitFor(() => typeof Player !== "undefined" && !!Player)
+hookUI()
+await updateManifest()
+loadAddons()
+registerFUSAMDebugMethod()
