@@ -24,7 +24,7 @@
 		--fusam-inset-element: #222;
 		--fusam-element: #353535;
 		--fusam-border: #6c6c6c;
-		--icon-filter: invert(1);
+		--fusam-icon-filter: invert(1);
 	}
 }
 @media (prefers-color-scheme: light) {
@@ -36,11 +36,11 @@
 		--fusam-inset-element: #e6e6e6;
 		--fusam-element: #ffffff;
 		--fusam-border: #a0a0a0;
-		--icon-filter: none;
+		--fusam-icon-filter: none;
 	}
 }
 :root {
-	--padding: 1.15em;
+	--fusam-padding: 1.15em;
 }
 #fusam-show-button {
 	position: absolute;
@@ -90,7 +90,7 @@
 		width: 2.3em;
 		height: 2.3em;
 		pointer-events: none;
-		filter: var(--icon-filter);
+		filter: var(--fusam-icon-filter);
 	}
 }
 
@@ -241,7 +241,7 @@
 			pointer-events: none;
 		}
 		[src~="icon-fallback"] {
-			filter: var(--icon-filter);
+			filter: var(--fusam-icon-filter);
 		}
 	}
 	& .addon-content {
@@ -310,7 +310,7 @@
 			& img {
 				width: 2em;
 				height: 2em;
-				filter: var(--icon-filter);
+				filter: var(--fusam-icon-filter);
 				pointer-events: none;
 			}
 		}
