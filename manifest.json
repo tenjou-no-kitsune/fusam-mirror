@@ -628,7 +628,11 @@
 		},
 		{
 			"id": "AFC",
-			"name": "Abundantia Florum ─Chromatica─",
+			"icon": "https://raw.githubusercontent.com/awdrrawd/BC-AFC/refs/heads/main/Images/AFC-ICON.png",
+			"name": {
+				"en": "Abundantia Florum ─Chromatica─",
+				"cn": "繁戀如花 ─繽紛─"
+			},
 			"description": "Extended lover framework featuring relationship progression, shared private rooms, integrated Heart Lock systems.",
 			"author": "Likolisu",
 			"repository": "https://github.com/awdrrawd/BC-AFC",
@@ -643,7 +647,10 @@
 		},
 		{
 			"id": "FCM",
-			"name": "Friends and ChatRoom Manager",
+			"name":  {
+				"en": "Friends and ChatRoom Manager",
+				"cn": "好友與房間管理"
+			},
 			"description": "Friends and chatroom enhancement toolkit with avatar display, relationship tracking, player search, and extended room utilities.",
 			"author": "Likolisu",
 			"repository": "https://github.com/awdrrawd/BC-FCM",
@@ -653,6 +660,24 @@
 				{
 					"distribution": "dev",
 					"source": "https://awdrrawd.github.io/BC-FCM/assets/main.js"
+				}
+			]
+		},
+		{
+			"id": "HSC",
+			"name":  {
+				"en": "Hypnotic Slave Club",
+				"cn": "催眠奴隸俱樂部"
+			},
+			"description": "Provides a variety of hypnosis effects to enhance the immersion of the experience.",
+			"author": "Likolisu",
+			"repository": "https://github.com/awdrrawd/BC-HSC",
+			"tags": ["expansion"],
+			"type": "module",
+			"versions": [
+				{
+					"distribution": "dev",
+					"source": "https://awdrrawd.github.io/BC-HSC/assets/main.js"
 				}
 			]
 		}
