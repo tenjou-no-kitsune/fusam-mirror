@@ -633,7 +633,7 @@
 			"author": "Likolisu",
 			"repository": "https://github.com/awdrrawd/liko-Plugin-Repository",
 			"tags": ["expansion"],
-			"type": "script",
+			"type": "eval",
 			"versions": [
 				{
 					"distribution": "dev",
@@ -648,7 +648,7 @@
 			"author": "Likolisu",
 			"repository": "https://github.com/awdrrawd/liko-Plugin-Repository",
 			"tags": ["expansion"],
-			"type": "script",
+			"type": "eval",
 			"versions": [
 				{
 					"distribution": "dev",
