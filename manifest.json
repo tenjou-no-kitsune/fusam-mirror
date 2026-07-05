@@ -631,7 +631,7 @@
 			"name": "Abundantia Florum ─Chromatica─",
 			"description": "Extended lover framework featuring relationship progression, shared private rooms, integrated Heart Lock systems.",
 			"author": "Likolisu",
-			"repository": "https://github.com/awdrrawd/liko-Plugin-Repository",
+			"repository": "https://github.com/awdrrawd/BC-AFC",
 			"tags": ["expansion"],
 			"type": "eval",
 			"versions": [
@@ -646,7 +646,7 @@
 			"name": "Friends and ChatRoom Manager",
 			"description": "Friends and chatroom enhancement toolkit with avatar display, relationship tracking, player search, and extended room utilities.",
 			"author": "Likolisu",
-			"repository": "https://github.com/awdrrawd/liko-Plugin-Repository",
+			"repository": "https://github.com/awdrrawd/BC-FCM",
 			"tags": ["expansion"],
 			"type": "eval",
 			"versions": [
