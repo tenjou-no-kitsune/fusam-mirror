@@ -250,7 +250,8 @@ export class ManifestEntry {
 					break
 			}
 		} catch (e) {
-			throw new Error(`Failed to load addon "${this.#name}"`)
+			console.error(`[FUSAM] Failed to load addon ${this.id} "${this.#name}"`, e)
+			throw new Error(`Addon ${this.id} "${this.#name}" failed to load. Check console for errors.`)
 		}
 	}
 }
