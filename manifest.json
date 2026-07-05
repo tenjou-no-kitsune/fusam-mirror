@@ -637,7 +637,7 @@
 			"versions": [
 				{
 					"distribution": "dev",
-					"source": "https://raw.githubusercontent.com/awdrrawd/liko-Plugin-Repository/main/Plugins/Liko-ACF.user.js"
+					"source": "https://awdrrawd.github.io/BC-AFC/assets/main.js"
 				}
 			]
 		},
@@ -652,7 +652,7 @@
 			"versions": [
 				{
 					"distribution": "dev",
-					"source": "https://raw.githubusercontent.com/awdrrawd/liko-Plugin-Repository/main/Plugins/Liko-FCM.user.js"
+					"source": "https://awdrrawd.github.io/BC-FCM/assets/main.js"
 				}
 			]
 		}
