@@ -1,4 +1,5 @@
 import { sleep, waitFor } from "./delay.js"
+import { getFUSAM } from "./fusam.js"
 import { disableBrowserMod, enableBrowserMod, getBrowser } from "./localstore.js"
 import { getAddon, getAddonVersion, updateManifest } from "./manifest.js"
 import { disableAccountMod, getAccount, playerSettingsLoaded, saveAccount } from "./playerstore.js"
@@ -23,10 +24,16 @@ window.addEventListener("error", (event) => {
 	)
 })
 
+/**
+ * @param {string} status
+ */
 function setLastSessionStatus(status) {
 	localStorage?.setItem?.(lastSessionStatusKey, status)
 }
 
+/**
+ * @param {string} error
+ */
 function setLastError(error) {
 	localStorage?.setItem?.(lastErrorKey, error)
 	setLastSessionStatus("error")
@@ -37,10 +44,10 @@ export function getLastError() {
 }
 
 /**
- * @param {Window["FUSAM"]["addons"][""]["status"]} status
+ * @param {import("./types/fusam.js").FUSAMAddonState['status']} status
  */
 function getLoadedAddonsByStatus(status) {
-	return Object.entries(window.FUSAM.addons)
+	return Object.entries(getFUSAM().addons)
 		.filter(([_, state]) => state.status === status)
 		.map(([id]) => id)
 }
@@ -132,34 +139,36 @@ export async function loadAddons() {
  * @param {boolean} [accountLoad=false]
  */
 async function load(settings, accountLoad = false) {
+	const FUSAM = getFUSAM()
 	for (const [id, distribution] of Object.entries(settings)) {
-		if (id in window.FUSAM.addons) continue
+		if (id in FUSAM.addons) continue
 
-		window.FUSAM.addons[id] = {
+		FUSAM.addons[id] = {
 			distribution,
 			status: "loading",
 		}
 
 		const addon = getAddon(id)
+		if (!addon) continue
 		const version = getAddonVersion(id, distribution)
 		if (!version) {
 			console.warn(`[FUSAM]: Addon ${id} or its distribution ${distribution} not found`)
-			window.FUSAM.addons[id].status = "missing"
+			FUSAM.addons[id].status = "missing"
 			continue
 		}
 		if (addon.browserOnly && accountLoad) {
 			console.warn(`[FUSAM]: Browser-only addon ${id} found in account list`)
-			window.FUSAM.addons[id].status = "browser-only"
+			FUSAM.addons[id].status = "browser-only"
 			continue
 		}
 		console.debug(`[FUSAM]: Loading addon ${id} from ${distribution}`)
 		;(async () => {
 			try {
 				addon.load(version)
-				window.FUSAM.addons[id].status ??= "loaded"
+				FUSAM.addons[id].status ??= "loaded"
 			} catch (e) {
 				console.error(`[FUSAM]: Failed to load addon ${id}`, e)
-				window.FUSAM.addons[id].status = "error"
+				FUSAM.addons[id].status = "error"
 				setLastError(`Failed to load addon ${id}: ${e}`)
 			}
 		})()
@@ -183,6 +192,10 @@ export function scriptAddon(url, type) {
 	})
 }
 
+/**
+ * @param {string} url
+ * @param {string} source
+ */
 export async function evalAddon(url, source) {
 	await fetch(url)
 		.then((resp) => resp.text())

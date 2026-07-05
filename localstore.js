@@ -20,6 +20,9 @@ import { isSettingsV1 } from "./typeasserts.js"
 
 const storageKey = "fusam.settings"
 
+/**
+ * @returns {import("./types/fusam.js").FUSAMSettings}
+ */
 export function getBrowser() {
 	const s = /** @type {import("./types/fusam.js").FUSAMSettings | Record<string, string>} */ (
 		JSON.parse(window.localStorage.getItem(storageKey) || "{}") || {}
@@ -33,6 +36,9 @@ export function getBrowser() {
 	}
 }
 
+/**
+ * @param {import("./types/fusam.js").FUSAMSettings} value
+ */
 function setBrowser(value) {
 	window.localStorage.setItem(storageKey, JSON.stringify(value))
 }
@@ -40,16 +46,26 @@ function setBrowser(value) {
 const settings = getBrowser()
 console.debug("[FUSAM]: Loaded device settings", settings)
 
+/**
+ * @param {string} id
+ * @param {string} distribution
+ */
 export function enableBrowserMod(id, distribution) {
 	settings.enabledDistributions[id] = distribution
 	saveBrowser()
 }
 
+/**
+ * @param {string} id
+ */
 export function disableBrowserMod(id) {
 	delete settings.enabledDistributions[id]
 	saveBrowser()
 }
 
+/**
+ * @param {string} id
+ */
 export function browserDistribution(id) {
 	return settings.enabledDistributions[id]
 }

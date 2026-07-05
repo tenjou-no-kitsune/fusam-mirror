@@ -1,6 +1,7 @@
 import { downloadZip } from "./vendor/client-zip.js"
 import { getLastError } from "./loader.js"
 import { bcModSdk } from "./vendor/bcmodsdk.js"
+import { getFUSAM } from "./fusam.js"
 
 /**
  * @type {Map<string, () => string | Promise<string>>}
@@ -22,7 +23,7 @@ export async function generateDebugReport(addon) {
 	const now = Date.now()
 	if (addon) {
 		if (debugMethods.has(addon)) {
-			const debugBlob = await debugMethods.get(addon)()
+			const debugBlob = (await debugMethods.get(addon)?.()) ?? ""
 			saveBlobAsFile(new Blob([debugBlob]), filename(addon, now))
 			return
 		}
@@ -71,7 +72,7 @@ export function registerFUSAMDebugMethod() {
 		d += `Local storage: ${isLocalStorageAvailable() ? "available" : "unavailable"}\n`
 		d += `Domain used: ${window.location.host}\n`
 		d += `Last error: ${getLastError()}\n`
-		d += `FUSAM-enabled addons:\n - ${Object.entries(window.FUSAM.addons)
+		d += `FUSAM-enabled addons:\n - ${Object.entries(getFUSAM().addons)
 			.map(([addon, ver]) => `${addon}:${JSON.stringify(ver)}`)
 			.join("\n - ")}\n`
 		d += `SDK-enabled addons:\n - ${bcModSdk

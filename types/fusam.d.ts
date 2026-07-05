@@ -24,7 +24,7 @@ declare global {
 	}
 }
 
-type FUSAMPublicAPI = {
+export type FUSAMPublicAPI = {
 	present: true
 	addons: Record<string, FUSAMAddonState>
 	registerDebugMethod: (name: string, method: () => string | Promise<string>) => void
@@ -34,7 +34,7 @@ type FUSAMPublicAPI = {
 	}
 }
 
-type FUSAMAddonState = {
+export type FUSAMAddonState = {
 	distribution: string
 	status: "loading" | "loaded" | "error" | "missing" | "browser-only"
 }
