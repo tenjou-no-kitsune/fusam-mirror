@@ -197,10 +197,8 @@ export function scriptAddon(url, type) {
  * @param {string} source
  */
 export async function evalAddon(url, source) {
-	await fetch(url)
-		.then((resp) => resp.text())
-		.then((resp) => {
-			resp = resp.replace(/sourceMappingURL=.*?.map/u, `sourceMappingURL=${source}.map`)
-			eval?.(resp)
-		})
+	const resp = await fetch(url)
+	let data = await resp.text()
+	data = data.replace(/sourceMappingURL=.*?.map/u, `sourceMappingURL=${source}.map`)
+	eval?.(data)
 }
