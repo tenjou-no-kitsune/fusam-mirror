@@ -19,7 +19,8 @@ $SED -i -e "s#LOCAL_FUSAM#$shortSHA#" debug.js
 $SED -i -e "s#http://localhost:3001#https://sidiousious.gitlab.io/bc-addon-loader#" config.js
 $SED -i -e "s#http://localhost:3001#https://sidiousious.gitlab.io/bc-addon-loader#" loader.user.js
 for f in *.js; do
-    $SED -i -e "s#\"./\\([^/]*.js\\)\"#\"./$SHA.\\1\"#g" $f
+    $SED -i -e "s#\"./\\([^/]*.js\\)\"#\"./$SHA.\\1\"#g" \
+            -e "s#\"./$SHA\\.fusam\\.js\"#\"./fusam.js\"#g" $f
 done
 ls -R
 for f in *.js; do
