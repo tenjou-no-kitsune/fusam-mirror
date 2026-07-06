@@ -681,6 +681,24 @@
 					"source": "https://awdrrawd.github.io/BC-HSC/assets/main.js"
 				}
 			]
+		},
+		{
+			"id": "EMLALOCK",
+			"name": "EmlaLock BC Integration",
+			"description": "Shows EmlaLock account and lock status badges",
+			"icon": "https://gitlab.com/emlalock/bc-userscript/-/raw/main/logo.svg",
+			"author": "EmlaLock",
+			"repository": "https://gitlab.com/emlalock/bc-userscript",
+			"website": "https://www.emlalock.com",
+			"discord": "https://discord.gg/9gwPqQxqfZ",
+			"tags": ["expansion"],
+			"type": "script",
+			"versions": [
+				{
+					"distribution": "stable",
+					"source": "https://www.emlalock.com/bc-emlalock.user.js"
+				}
+			]
 		}
 	]
 }
