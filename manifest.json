@@ -609,6 +609,7 @@
 		},
 		{
 			"id": "BCNeko",
+			"icon": "https://cdn.jsdelivr.net/gh/QAQMOON/meow-@main/assets/neko-icon.png",
 			"name": "Bondage Club Neko Chat Enhancer",
 			"description": "Catgirl chat enhancer with neko-style message conversion, chat decorations, kaomoji picker, quick roleplay actions, and color themes.",
 			"author": "QAQMOON",
@@ -618,11 +619,11 @@
 			"versions": [
 				{
 					"distribution": "stable",
-					"source": "https://raw.githubusercontent.com/QAQMOON/meow-/main/dist/bondage-club-neko.runtime.js"
+					"source": "https://cdn.jsdelivr.net/gh/QAQMOON/meow-@main/dist/bondage-club-neko.runtime.full.js"
 				},
 				{
 					"distribution": "dev",
-					"source": "https://raw.githubusercontent.com/QAQMOON/meow-/main/dist/bondage-club-neko.dev.runtime.js"
+					"source": "https://cdn.jsdelivr.net/gh/QAQMOON/meow-@main/dist/bondage-club-neko.dev.runtime.js"
 				}
 			]
 		},
