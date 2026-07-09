@@ -2,11 +2,11 @@
 	"include": ["node_modules/bc-stubs/bc/**/*.d.ts", "types/*.d.ts", "**/*.js", "**/*.ts"],
 	"exclude": ["public/"],
 	"compilerOptions": {
-		"module": "ES2022",
+		"module": "nodenext",
 		"allowJs": true,
-		"moduleResolution": "node",
+		"moduleResolution": "nodenext",
 		"noEmit": true,
-		"target": "es2020",
+		"target": "es2025",
 		"checkJs": true
 	}
 }

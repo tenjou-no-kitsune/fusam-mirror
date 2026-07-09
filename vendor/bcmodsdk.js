@@ -2,7 +2,7 @@
  * Bondage Club Mod Development Kit - MIT licensed
  * For more info see: https://github.com/Jomshir98/bondage-club-mod-sdk
  */
-/** @type {import('../types/bcModSdk').ModSDKGlobalAPI} */
+/** @type {import('../types/bcModSdk.js').ModSDKGlobalAPI} */
 // eslint-disable-next-line capitalized-comments, multiline-comment-style
 // prettier-ignore
 // @ts-ignore

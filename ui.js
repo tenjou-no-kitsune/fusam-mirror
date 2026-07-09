@@ -36,6 +36,10 @@ const showButtonId = "fusam-show-button"
 const addonManagerId = "fusam-addon-manager-container"
 const addonManagerCloseButtonId = "fusam-addon-manager-close"
 
+/**
+ * @param {any[]} [args]
+ * @param {(...args: any[]) => any} [next]
+ */
 function showButton(args, next) {
 	if (!document.getElementById(showButtonId)) {
 		const button = document.createElement("button")
@@ -49,6 +53,10 @@ function showButton(args, next) {
 	return next ? next(args) : undefined
 }
 
+/**
+ * @param {any[]} [args]
+ * @param {(...args: any[]) => any} [next]
+ */
 function hideButton(args, next) {
 	document.getElementById(showButtonId)?.remove()
 	return next ? next(args) : undefined
@@ -65,7 +73,10 @@ async function showAddonManager() {
 	await drawAddonManager()
 
 	await waitFor(() => !!document.getElementById(addonManagerCloseButtonId))
-	document.getElementById(addonManagerCloseButtonId).onclick = hideAddonManager
+	const button = document.getElementById(addonManagerCloseButtonId)
+	if (button) {
+		button.onclick = hideAddonManager
+	}
 
 	registerEventListeners()
 }
@@ -76,10 +87,12 @@ function drawExitButton() {
 
 /**
  * @param {MouseEvent} e
+ * @this {HTMLElement}
  */
 function debugReport(e) {
 	e?.preventDefault()
 	const addon = this.getAttribute("data-addon")
+	if (!addon) return;
 	console.debug("Generating debug report for", addon)
 	generateDebugReport(addon)
 }
@@ -100,7 +113,7 @@ async function searchInput(e) {
 
 /**
  * Propagate key presses of writable characters to the search input
- * @this {HTMLElement}
+ * @this {HTMLElement | Document}
  * @param {KeyboardEvent} e
  */
 function documentKeyDown(e) {
@@ -141,7 +154,7 @@ function documentKeyDown(e) {
 
 /**
  * Propogate copy/paste actions to the search input
- * @this {HTMLElement}
+ * @this {HTMLElement | Document}
  * @param {ClipboardEvent} e
  */
 function documentPaste(e) {
@@ -173,7 +186,7 @@ function documentPaste(e) {
 async function drawAddonManager() {
 	const manifest = await getManifest()
 
-	const s = /** @type {{ manifest: import("./manifest").Manifest }} */ (
+	const s = /** @type {{ manifest: import("./manifest.js").Manifest }} */ (
 		signal({
 			manifest,
 		})
@@ -242,7 +255,7 @@ async function drawAddonManager() {
 	}
 
 	/**
-	 * @param {import("./manifest").ManifestEntry} entry
+	 * @param {import("./manifest.js").ManifestEntry} entry
 	 */
 	function drawEntry(entry) {
 		const device = browserDistribution(entry.id)
@@ -315,7 +328,7 @@ async function drawAddonManager() {
 	}
 
 	/**
-	 * @param {import("./manifest").ManifestVersion} version
+	 * @param {import("./manifest.js").ManifestVersion} version
 	 * @param {boolean} selected
 	 */
 	function drawVersionOption(version, selected) {
@@ -345,43 +358,37 @@ function registerEventListeners() {
 		allSelects.forEach((e) => (e.style.width = `${maxWidth}px`))
 	}
 
-	document.querySelectorAll(".fusam-addon-entry-version-device select").forEach(
-		/**
-		 * @param {HTMLSelectElement} select
-		 */
-		(select) => {
-			const addon = select.getAttribute("data-addon")
-			select.onchange = () => {
-				const distribution = select.value
-				if (distribution === "none") {
-					disableBrowserMod(addon)
-				} else {
-					enableBrowserMod(addon, distribution)
-				}
+	document.querySelectorAll(".fusam-addon-entry-version-device select").forEach((element) => {
+		const select = /** @type {HTMLSelectElement} select */ (element)
+		const addon = select.getAttribute("data-addon")
+		if (!addon) return
+		select.onchange = () => {
+			const distribution = select.value
+			if (distribution === "none") {
+				disableBrowserMod(addon)
+			} else {
+				enableBrowserMod(addon, distribution)
 			}
 		}
-	)
+	})
 
-	document.querySelectorAll(".fusam-addon-entry-version-account select").forEach(
-		/**
-		 * @param {HTMLSelectElement} select
-		 */
-		(select) => {
-			const addon = select.getAttribute("data-addon")
-			select.onchange = () => {
-				const distribution = select.value
-				if (distribution === "none") {
-					disableAccountMod(addon)
-				} else {
-					enableAccountMod(addon, distribution)
-				}
+	document.querySelectorAll(".fusam-addon-entry-version-account select").forEach((element) => {
+		const select = /** @type {HTMLSelectElement} select */ (element)
+		const addon = select.getAttribute("data-addon")
+		if (!addon) return
+		select.onchange = () => {
+			const distribution = select.value
+			if (distribution === "none") {
+				disableAccountMod(addon)
+			} else {
+				enableAccountMod(addon, distribution)
 			}
 		}
-	)
+	})
 }
 
 function hideAddonManager() {
-	document.getElementById(addonManagerId).remove()
+	document.getElementById(addonManagerId)?.remove()
 	document.removeEventListener("keydown", documentKeyDown)
 	document.removeEventListener("paste", documentPaste)
 	if (playerSettingsLoaded()) {
@@ -409,7 +416,7 @@ export function hookUI() {
 
 	SDK.hookFunction("PreferenceRun", HOOK_PRIORITY.ADD_BEHAVIOR, (args, next) => {
 		const ret = next(args)
-		if (typeof PreferenceSubscreen === "object") {
+		if (PreferenceSubscreen && typeof PreferenceSubscreen === "object") {
 			if (PreferenceSubscreen.name !== "Main") {
 				hideButton()
 			} else {
@@ -592,5 +599,5 @@ export function getUserLanguages() {
 		stack.push(val)
 		stack.push(val.split("-")[0])
 		return stack
-	}, [])
+	}, /** @type {string[]} */ ([]))
 }

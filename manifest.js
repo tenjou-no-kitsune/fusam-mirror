@@ -29,6 +29,9 @@ const MANIFEST_TAGS = Object.freeze(
  */
 
 class ManifestError extends Error {
+	/**
+	 * @param {string} message
+	 */
 	constructor(message) {
 		super(message)
 		this.name = "ManifestError"
@@ -233,22 +236,27 @@ export class ManifestEntry {
 	 * @param {ManifestVersion} version
 	 */
 	async load(version) {
-		const URL = version.source + (this.noCacheBusting ? "" : `?v=${Date.now()}`)
-		switch (this.type) {
-			case "eval":
-				await evalAddon(URL, version.source)
-				break
-			case "module":
-				await import(URL)
-				break
-			case "script":
-				await scriptAddon(URL, "text/javascript")
-				break
+		try {
+			const URL = version.source + (this.noCacheBusting ? "" : `?v=${Date.now()}`)
+			switch (this.type) {
+				case "eval":
+					await evalAddon(URL, version.source)
+					break
+				case "module":
+					await import(URL)
+					break
+				case "script":
+					await scriptAddon(URL, "text/javascript")
+					break
+			}
+		} catch (e) {
+			console.error(`[FUSAM] Failed to load addon ${this.id} "${this.#name}"`, e)
+			throw new Error(`Addon ${this.id} "${this.#name}" failed to load. Check console for errors.`)
 		}
 	}
 }
 
-/** @type {Manifest} */
+/** @type {Manifest | undefined} */
 let manifest = undefined
 
 export async function updateManifest() {
@@ -299,12 +307,21 @@ export async function getManifest() {
 	return manifest
 }
 
+/**
+ * @param {string} id
+ * @returns {ManifestEntry | undefined}
+ */
 export function getAddon(id) {
 	return manifest?.addons.find((addon) => addon.id === id)
 }
 
+/**
+ * @param {string} id
+ * @param {string} distribution
+ * @returns {ManifestVersion | undefined}
+ */
 export function getAddonVersion(id, distribution) {
 	const addon = getAddon(id)
-	if (!addon) return null
+	if (!addon) return undefined
 	return addon.versions.find((version) => version.distribution === distribution)
 }

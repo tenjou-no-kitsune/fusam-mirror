@@ -36,12 +36,12 @@ export function getAccount() {
 
 	if (Player?.ExtensionSettings?.FUSAMSettings) {
 		settings = /** @type {import("./types/fusam.js").FUSAMSettings} */ (
-			JSON.parse(LZString.decompressFromBase64(Player.ExtensionSettings?.FUSAMSettings))
+			JSON.parse(LZString.decompressFromBase64(Player.ExtensionSettings?.FUSAMSettings) ?? "{}")
 		)
 		loaded = true
 	} else if (Player?.OnlineSettings?.FUSAMSettings && !Player?.ExtensionSettings?.FUSAMSettings) {
 		settings = /** @type {import("./types/fusam.js").FUSAMSettings} */ (
-			JSON.parse(LZString.decompressFromBase64(Player.OnlineSettings?.FUSAMSettings))
+			JSON.parse(LZString.decompressFromBase64(Player.OnlineSettings?.FUSAMSettings) ?? "{}")
 		)
 		Player.ExtensionSettings.FUSAMSettings = Player.OnlineSettings.FUSAMSettings
 
@@ -66,15 +66,27 @@ export function getAccount() {
 	}
 }
 
+/**
+ * @param {string} id
+ * @param {string} distribution
+ */
 export function enableAccountMod(id, distribution) {
-	if (getAddon(id).browserOnly) return
+	const addon = getAddon(id)
+	if (!addon || addon.browserOnly) return
 	settings.enabledDistributions[id] = distribution
 }
 
+/**
+ * @param {string} id
+ */
 export function disableAccountMod(id) {
 	delete settings.enabledDistributions[id]
 }
 
+/**
+ * @param {string} id
+ * @returns {string}
+ */
 export function accountDistribution(id) {
 	return settings.enabledDistributions[id]
 }

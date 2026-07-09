@@ -32,6 +32,14 @@ window.FUSAM = {
 	},
 }
 
+/**
+ *
+ * @returns {import("./types/fusam.js").FUSAMPublicAPI}
+ */
+export function getFUSAM() {
+	return /** @type {import("./types/fusam.js").FUSAMPublicAPI}} */ (window.FUSAM)
+}
+
 async function loadListener() {
 	if (typeof GameReadyState === "undefined" || GameReadyState?.load === undefined) {
 		// Things are FUBAR at this point

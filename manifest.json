@@ -609,6 +609,7 @@
 		},
 		{
 			"id": "BCNeko",
+			"icon": "https://cdn.jsdelivr.net/gh/QAQMOON/meow-@main/assets/neko-icon.png",
 			"name": "Bondage Club Neko Chat Enhancer",
 			"description": "Catgirl chat enhancer with neko-style message conversion, chat decorations, kaomoji picker, quick roleplay actions, and color themes.",
 			"author": "QAQMOON",
@@ -618,41 +619,84 @@
 			"versions": [
 				{
 					"distribution": "stable",
-					"source": "https://raw.githubusercontent.com/QAQMOON/meow-/main/dist/bondage-club-neko.runtime.js"
+					"source": "https://cdn.jsdelivr.net/gh/QAQMOON/meow-@main/dist/bondage-club-neko.runtime.full.js"
 				},
 				{
 					"distribution": "dev",
-					"source": "https://raw.githubusercontent.com/QAQMOON/meow-/main/dist/bondage-club-neko.dev.runtime.js"
+					"source": "https://cdn.jsdelivr.net/gh/QAQMOON/meow-@main/dist/bondage-club-neko.dev.runtime.js"
 				}
 			]
 		},
 		{
 			"id": "AFC",
-			"name": "Abundantia Florum ─Chromatica─",
+			"icon": "https://raw.githubusercontent.com/awdrrawd/BC-AFC/refs/heads/main/Images/AFC-ICON.png",
+			"name": {
+				"en": "Abundantia Florum ─Chromatica─",
+				"cn": "繁戀如花 ─繽紛─"
+			},
 			"description": "Extended lover framework featuring relationship progression, shared private rooms, integrated Heart Lock systems.",
 			"author": "Likolisu",
-			"repository": "https://github.com/awdrrawd/liko-Plugin-Repository",
+			"repository": "https://github.com/awdrrawd/BC-AFC",
 			"tags": ["expansion"],
-			"type": "eval",
+			"type": "module",
 			"versions": [
 				{
 					"distribution": "dev",
-					"source": "https://raw.githubusercontent.com/awdrrawd/liko-Plugin-Repository/main/Plugins/Liko-ACF.user.js"
+					"source": "https://awdrrawd.github.io/BC-AFC/assets/main.js"
 				}
 			]
 		},
 		{
 			"id": "FCM",
-			"name": "Friends and ChatRoom Manager",
+			"name":  {
+				"en": "Friends and ChatRoom Manager",
+				"cn": "好友與房間管理"
+			},
 			"description": "Friends and chatroom enhancement toolkit with avatar display, relationship tracking, player search, and extended room utilities.",
 			"author": "Likolisu",
-			"repository": "https://github.com/awdrrawd/liko-Plugin-Repository",
+			"repository": "https://github.com/awdrrawd/BC-FCM",
 			"tags": ["expansion"],
-			"type": "eval",
+			"type": "module",
 			"versions": [
 				{
 					"distribution": "dev",
-					"source": "https://raw.githubusercontent.com/awdrrawd/liko-Plugin-Repository/main/Plugins/Liko-FCM.user.js"
+					"source": "https://awdrrawd.github.io/BC-FCM/assets/main.js"
+				}
+			]
+		},
+		{
+			"id": "HSC",
+			"name":  {
+				"en": "Hypnotic Slave Club",
+				"cn": "催眠奴隸俱樂部"
+			},
+			"description": "Provides a variety of hypnosis effects to enhance the immersion of the experience.",
+			"author": "Likolisu",
+			"repository": "https://github.com/awdrrawd/BC-HSC",
+			"tags": ["expansion"],
+			"type": "module",
+			"versions": [
+				{
+					"distribution": "dev",
+					"source": "https://awdrrawd.github.io/BC-HSC/assets/main.js"
+				}
+			]
+		},
+		{
+			"id": "EMLALOCK",
+			"name": "EmlaLock BC Integration",
+			"description": "Shows EmlaLock account and lock status badges",
+			"icon": "https://gitlab.com/emlalock/bc-userscript/-/raw/main/logo.svg",
+			"author": "EmlaLock",
+			"repository": "https://gitlab.com/emlalock/bc-userscript",
+			"website": "https://www.emlalock.com",
+			"discord": "https://discord.gg/9gwPqQxqfZ",
+			"tags": ["expansion"],
+			"type": "script",
+			"versions": [
+				{
+					"distribution": "stable",
+					"source": "https://www.emlalock.com/bc-emlalock.user.js"
 				}
 			]
 		}
