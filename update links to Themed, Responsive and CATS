@@ -55,7 +55,7 @@
 			"versions": [
 				{
 					"distribution": "stable",
-					"source": "https://ddeeplb.github.io/Themed-BC/themed.js"
+					"source": "https://protokink.github.io/Themed/themed.js"
 				}
 			]
 		},
@@ -264,14 +264,14 @@
 			"name": "Responsive",
 			"description": "Automatically sends messages when the user reaches a certain state (slapped, orgasm, etc).",
 			"author": "SaotomeToyStore, dDeepLb",
-			"repository": "https://github.com/dDeepLb/BC-Responsive",
+			"repository": "https://github.com/ProtoKink/Responsive",
 			"tags": ["expansion"],
 			"type": "script",
-			"website": "https://github.com/dDeepLb/BC-Responsive/wiki",
+			"website": "https://github.com/ProtoKink/Responsive/wiki",
 			"versions": [
 				{
 					"distribution": "stable",
-					"source": "https://ddeeplb.github.io/BC-Responsive/main.js"
+					"source": "https://protokink.github.io/Responsive/main.js"
 				}
 			]
 		},
@@ -332,13 +332,13 @@
 			"name": "CATS (Chat Auto Translator Script)",
 			"description": "Addon that auto-translates the chat to the language you want. 130+ Languages available. Commands: /ttoggle to toggle the translator on and off. And /tlang <lang_code>, to change the language used.",
 			"author": "Ciber, dDeepLb and KatKammand",
-			"repository": "https://github.com/ciberweaboo/cats",
+			"repository": "https://github.com/ProtoKink/CATS",
 			"tags": ["enhancements", "expansion"],
-			"type": "eval",
+			"type": "script",
 			"versions": [
 				{
 					"distribution": "stable",
-					"source": "https://raw.githubusercontent.com/ciberweaboo/cats/main/cats.user.js"
+					"source": "https://protokink.github.io/CATS/index.js"
 				}
 			]
 		},
