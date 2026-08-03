@@ -19,6 +19,7 @@
 > 
 > manifest changes:  
 > - WCE: `wce.netlify.app` => `tenjou-no-kitsune.github.io/WCE`
+> - NFT: `nft-dc4430.gitlab.io` => `tenjou-no-kitsune.github.io/nft-mirror`
 
 # BC Addon Manager
 
