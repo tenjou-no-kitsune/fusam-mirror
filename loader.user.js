@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name Fantastic Ultimate Solution to Addon Management Loader
 // @namespace https://www.bondageprojects.com/
-// @version 1.0.5
+// @version 1.0.6
 // @description A loader for the FUSAM
 // @author Sidious
 // @downloadURL https://sidiousious.gitlab.io/bc-addon-loader/loader.user.js
