@@ -699,6 +699,23 @@
 					"source": "https://www.emlalock.com/bc-emlalock.user.js"
 				}
 			]
+		},
+		{
+			"id": "BCPlus",
+			"icon": "https://seles84.github.io/bc-plus/icon.png",
+			"name": "BC+ (Bondage Club Plus)",
+			"description": "Rules, curses, punishments, contracts, auto-generated permissions, a virtual pet module and collar welding - runs standalone or alongside BCX",
+			"author": "Seles",
+			"repository": "https://github.com/Seles84/bc-plus",
+			"website": "https://seles84.github.io/bc-plus/",
+			"tags": ["enhancements", "expansion"],
+			"type": "script",
+			"versions": [
+				{
+					"distribution": "stable",
+					"source": "https://seles84.github.io/bc-plus/bcplus.js"
+				}
+			]
 		}
 	]
 }
