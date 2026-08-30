@@ -629,7 +629,7 @@
 		},
 		{
 			"id": "AFC",
-			"icon": "https://raw.githubusercontent.com/awdrrawd/BC-AFC/refs/heads/main/Images/AFC-ICON.png",
+			"icon": "https://cdn.jsdelivr.net/gh/awdrrawd/BC-AFC@main/Images/AFC-ICON.png",
 			"name": {
 				"en": "Abundantia Florum ─Chromatica─",
 				"cn": "繁戀如花 ─繽紛─"
