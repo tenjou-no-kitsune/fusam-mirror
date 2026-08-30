@@ -702,6 +702,25 @@
 			]
 		},
 		{
+			"id": "AEE",
+			"icon": "https://cdn.jsdelivr.net/gh/awdrrawd/BC-AEE@main/public/AEE_icon.jpg",
+			"name": {
+				"cn": "外觀編輯拓展",
+				"en": "Appearance editing extension"
+			},
+			"description": "A clothing editor extension for the club, featuring a modern UI, a wide range of convenient tools, intuitive controls, highly customizable settings, as well as a completely revamped wardrobe system with expanded clothing capacity.",
+			"author": "Likolisu",
+			"repository": "https://github.com/awdrrawd/BC-AEE",
+			"tags": ["expansion"],
+			"type": "module",
+			"versions": [
+				{
+					"distribution": "beta",
+					"source": "https://awdrrawd.github.io/BC-AEE/assets/main.js"
+				}
+			]
+		},
+		{
 			"id": "BCPlus",
 			"icon": "https://seles84.github.io/bc-plus/icon.png",
 			"name": "BC+ (Bondage Club Plus)",
