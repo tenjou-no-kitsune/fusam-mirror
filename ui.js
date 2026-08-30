@@ -92,7 +92,7 @@ function drawExitButton() {
 function debugReport(e) {
 	e?.preventDefault()
 	const addon = this.getAttribute("data-addon")
-	if (!addon) return;
+	if (!addon) return
 	console.debug("Generating debug report for", addon)
 	generateDebugReport(addon)
 }
