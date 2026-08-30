@@ -666,7 +666,8 @@
 		},
 		{
 			"id": "HSC",
-			"name":  {
+			"icon": "https://cdn.jsdelivr.net/gh/awdrrawd/BC-HSC@main/Assets/Icon/HSC-iconB2.png",
+			"name": {
 				"en": "Hypnotic Slave Club",
 				"cn": "催眠奴隸俱樂部"
 			},
