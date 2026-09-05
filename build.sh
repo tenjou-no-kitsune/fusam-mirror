@@ -12,7 +12,7 @@ fi
 echo $OSTYPE
 
 mkdir -p public
-cp -r *.js *.html static manifest.json vendor public/
+cp -r *.js *.html static translations manifest.json vendor public/
 cd public
 $SED -i -e "s#1.0.0#$shortSHA#" vendor/bcmodsdk.js
 $SED -i -e "s#LOCAL_FUSAM#$shortSHA#" debug.js
