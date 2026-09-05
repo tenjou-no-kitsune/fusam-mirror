@@ -24,6 +24,33 @@ You may optionally also provide:
 - link to a website for more information
 - additional distributions (beta/dev versions)
 
+### Localized addon metadata
+
+`name` and `description` may be either a string or a language map. In AUTO mode, FUSAM checks the
+browser's ordered language preferences and uses the first supported match, falling back to English.
+Users can also select a language manually in the Addon Manager. The supported language codes are
+`TW`, `CN`, `EN`, `DE`, `FR`, `RU`, `UA`, and `ES`.
+
+```json
+{
+    "id": "example-addon",
+    "name": {
+        "EN": "Example Addon",
+        "TW": "範例插件",
+        "CN": "示例插件"
+    },
+    "description": {
+        "EN": "An example description.",
+        "TW": "範例介紹。",
+        "CN": "示例介绍。"
+    }
+}
+```
+
+Keep `id` stable and untranslated. Submit localized addon names and descriptions directly to this
+repository. For larger text catalogs inside an addon, use separate translation files and select
+them with the browser's ordered language preferences.
+
 ### Developing an Addon for FUSAM
 
 You need a [local HTTP server](https://gist.github.com/willurd/5720255) that serves your js file. Open the club and add `?fusam=http://localhost:<your_port>/<your_file>.js&fusamType=<module/script/eval>` replacing the `<placeholders>`, and you will be able to load your development addon as "Local Development by You" inside FUSAM.

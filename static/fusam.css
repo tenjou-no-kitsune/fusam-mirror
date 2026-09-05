@@ -15,7 +15,7 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-@media (prefers-color-scheme: dark) {
+ @media (prefers-color-scheme: dark) {
 	:root {
 		--fusam-text: #aaa;
 		/* no such thing in themed */
@@ -41,6 +41,9 @@
 }
 :root {
 	--fusam-padding: 1.15em;
+	--fusam-enabled-stable: #2c9cff;
+	--fusam-enabled-beta: #b76cff;
+	--fusam-enabled-dev: #ff9f43;
 }
 #fusam-show-button {
 	position: absolute;
@@ -81,7 +84,10 @@
 	background-color: white;
 }
 .fusam-icon-button {
+	width: 3.1em;
+	height: 3.1em;
 	aspect-ratio: 1;
+	box-sizing: border-box;
 	padding: 0.2em;
 	border: 1px solid var(--fusam-border);
 	background-color: var(--fusam-inset-element);
@@ -92,6 +98,67 @@
 		pointer-events: none;
 		filter: var(--fusam-icon-filter);
 	}
+}
+.fusam-text-button {
+	width: 3.1em;
+	height: 3.1em;
+	aspect-ratio: 1;
+	box-sizing: border-box;
+	padding: 0.2em;
+	border: 1px solid var(--fusam-border);
+	background: var(--fusam-inset-element);
+	color: var(--fusam-text);
+	font-weight: 700;
+	cursor: pointer;
+}
+.fusam-language-picker {
+	position: relative;
+	flex: none;
+}
+.fusam-flag {
+	font-family: "Twemoji Country Flags", "Arial", sans-serif;
+}
+#fusam-language-button {
+	color: var(--fusam-text);
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+#fusam-language-button > .fusam-flag {
+	font-size: 1.35em;
+	line-height: 1;
+	pointer-events: none;
+}
+.fusam-language-menu {
+	position: absolute;
+	top: calc(100% + 0.35em);
+	right: 0;
+	z-index: 10;
+	display: flex;
+	flex-direction: column;
+	min-width: 11em;
+	padding: 0.25em;
+	border: 1px solid var(--fusam-border);
+	background: var(--fusam-element);
+	box-shadow: 0 0.35em 0.8em rgba(0, 0, 0, 0.45);
+}
+.fusam-language-menu > button {
+	display: grid;
+	grid-template-columns: 2em 1fr;
+	align-items: center;
+	gap: 0.5em;
+	padding: 0.55em 0.7em;
+	border: 0;
+	background: transparent;
+	color: var(--fusam-text);
+	text-align: left;
+	white-space: nowrap;
+	cursor: pointer;
+}
+.fusam-language-menu > button:hover,
+.fusam-language-menu > button:focus,
+.fusam-language-menu > .fusam-language-selected {
+	background: var(--fusam-inset-element);
 }
 
 #fusam-addon-manager-container {
@@ -145,6 +212,33 @@
 	}
 	& .fusam-header-buttons {
 		text-align: right;
+		display: flex;
+		justify-content: flex-end;
+		gap: 0.35em;
+	}
+}
+
+#fusam-addon-intro {
+	position: relative;
+	z-index: 2;
+	padding: 0.65em 1em;
+	background: var(--fusam-main);
+	box-shadow: 0 0.35em 0.65em rgba(0, 0, 0, 0.3);
+	& .fusam-addon-container {
+		max-width: 70em;
+		margin: 0 auto;
+	}
+	& .fusam-addon {
+		grid-template-columns: 10.5em minmax(0, 1fr);
+		grid-template-rows: minmax(7em, auto) auto;
+		column-gap: 0.5em;
+	}
+	& .addon-content {
+		min-height: 7em;
+	}
+	& .addon-description {
+		height: auto;
+		max-height: 5em;
 	}
 }
 
@@ -194,6 +288,134 @@
 	flex: 1;
 	min-width: 43em;
 	list-style: none;
+	box-sizing: border-box;
+}
+
+.fusam-addon-container.fusam-enabled {
+	box-shadow:
+		inset 0 0 0 2px var(--fusam-enabled-stable),
+		0 0 0.55em var(--fusam-enabled-stable);
+}
+.fusam-addon-container.fusam-distribution-beta {
+	box-shadow:
+		inset 0 0 0 2px var(--fusam-enabled-beta),
+		0 0 0.55em var(--fusam-enabled-beta);
+}
+.fusam-addon-container.fusam-distribution-dev {
+	box-shadow:
+		inset 0 0 0 2px var(--fusam-enabled-dev),
+		0 0 0.55em var(--fusam-enabled-dev);
+}
+.addon-icon-fallback {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 90%;
+	height: 90%;
+	margin: 5%;
+	padding: 0.5em;
+	box-sizing: border-box;
+	font-weight: 700;
+	font-size: calc(1em + 6pt);
+	text-align: center;
+	overflow-wrap: anywhere;
+}
+.addon-icon-fallback::before {
+	content: attr(data-addon);
+}
+.addon-name::before,
+.addon-description::before {
+	content: attr(data-fusam-text);
+}
+
+#fusam-addons[data-view="thumbnails"] {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, 10em);
+	justify-content: center;
+	width: calc(100% - 4em);
+	gap: 1em;
+}
+#fusam-addons[data-view="thumbnails"] .fusam-addon-container {
+	width: 10em;
+	max-width: 10em;
+	min-width: 0;
+	overflow: hidden;
+	cursor: pointer;
+}
+#fusam-addons[data-view="thumbnails"] .fusam-addon {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: auto auto auto;
+	width: 10em;
+	min-width: 0;
+	max-width: 10em;
+	overflow: hidden;
+}
+#fusam-addons[data-view="thumbnails"] .addon-icon {
+	grid-column: 1;
+	grid-row: 1;
+	width: 10em;
+	height: 10em;
+	aspect-ratio: auto;
+}
+#fusam-addons[data-view="thumbnails"] .addon-content {
+	grid-column: 1;
+	grid-row: 2;
+	padding: 0.5em;
+	width: 100%;
+	min-width: 0;
+	box-sizing: border-box;
+	overflow: hidden;
+	text-align: center;
+}
+#fusam-addons[data-view="thumbnails"] .addon-content .addon-name {
+	font-size: 1.2em;
+	line-height: 1.15;
+	height: 5.25em;
+	min-height: 5.25em !important;
+	box-sizing: border-box;
+	overflow: hidden;
+	overflow-wrap: anywhere;
+	word-break: break-word;
+	white-space: normal;
+	max-width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+#fusam-addons[data-view="thumbnails"] .addon-details,
+#fusam-addons[data-view="thumbnails"] .addon-right-interactions {
+	display: none;
+}
+#fusam-addons[data-view="thumbnails"] .addon-interactions {
+	grid-column: 1;
+	grid-row: 3;
+	display: block;
+	width: 10em;
+	min-width: 0;
+	max-width: 10em;
+	overflow: hidden;
+}
+#fusam-addons[data-view="thumbnails"] .addon-left-interactions {
+	margin: 0;
+	gap: 1px;
+	width: 100%;
+	min-width: 0;
+}
+#fusam-addons[data-view="thumbnails"] .fusam-addon-entry-version-device,
+#fusam-addons[data-view="thumbnails"] .fusam-addon-entry-version-account {
+	flex: 1;
+	width: calc(50% - 0.5px);
+	max-width: calc(50% - 0.5px);
+	min-width: 0;
+	overflow: hidden;
+}
+#fusam-addons[data-view="thumbnails"] .addon-left-interactions select {
+	width: calc(100% - 0.5em);
+	margin: 0.9em 0.25em 0.25em;
+	font-size: 0.8em;
+	max-width: calc(100% - 0.5em);
+	box-sizing: border-box;
 }
 
 .fusam-addon {
