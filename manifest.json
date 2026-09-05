@@ -684,6 +684,22 @@
 			]
 		},
 		{
+			"id": "KikiLink",
+			"icon": "https://cdn.jsdelivr.net/gh/Lilja000/KikiLink@82885c09d2be1cf22dd5423555557e96c1c1c7a3/design/branding/kikilink-emblem.webp",
+			"name": "KikiLink",
+			"description": "Social profiles, direct and group chat, presence, room tools, media, custom activities, reactions, and quality-of-life features.",
+			"author": "Kiki",
+			"repository": "https://github.com/Lilja000/KikiLink",
+			"tags": ["enhancements", "expansion"],
+			"type": "script",
+			"versions": [
+				{
+					"distribution": "stable",
+					"source": "https://cdn.jsdelivr.net/gh/Lilja000/KikiLink@82885c09d2be1cf22dd5423555557e96c1c1c7a3/dist/KikiLink.fusam.js"
+				}
+			]
+		},
+		{
 			"id": "EMLALOCK",
 			"name": "EmlaLock BC Integration",
 			"description": "Shows EmlaLock account and lock status badges",
