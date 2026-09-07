@@ -18,7 +18,7 @@
 
 import { BaseURL } from "./config.js"
 import { evalAddon, scriptAddon } from "./loader.js"
-import { getUserLanguages } from "./ui.js"
+import { getPreferredLanguageKeys } from "./translations/index.js"
 
 const MANIFEST_TAGS = Object.freeze(
 	/** @type {const} */ (["automation", "browser-only", "cheats", "enhancements", "expansion", "recommended"])
@@ -213,18 +213,15 @@ export class ManifestEntry {
 
 	get name() {
 		if (typeof this.#name === "string") return this.#name
-		for (const lang of getUserLanguages()) {
-			if (this.#name[lang]) return this.#name[lang]
-		}
-		return this.#name["en"]
+		for (const language of getPreferredLanguageKeys()) if (this.#name[language]) return this.#name[language]
+		return Object.values(this.#name)[0]
 	}
 
 	get description() {
 		if (typeof this.#description === "string") return this.#description
-		for (const lang of getUserLanguages()) {
-			if (this.#description[lang]) return this.#description[lang]
-		}
-		return this.#description["en"]
+		for (const language of getPreferredLanguageKeys())
+			if (this.#description[language]) return this.#description[language]
+		return Object.values(this.#description)[0]
 	}
 
 	get browserOnly() {

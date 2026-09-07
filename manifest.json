@@ -428,7 +428,7 @@
 			"id": "MoonCEBC",
 			"icon": "https://lunarkitsunify.github.io/MoonCEBC/src/Images/AddonIcon.png",
 			"name": "Moon Cards Editor",
-			"description": "Deck editor in online rooms — manage your cards without leaving the game.",
+			"description": "A quality-of-life upgrade for the Club Card game deck editor.",
 			"author": "Lunar Kitsunify",
 			"repository": "https://github.com/LunarKitsunify/MoonCEBC",
 			"discord": "https://discord.gg/ZByQXVHm4u",
@@ -629,7 +629,7 @@
 		},
 		{
 			"id": "AFC",
-			"icon": "https://raw.githubusercontent.com/awdrrawd/BC-AFC/refs/heads/main/Images/AFC-ICON.png",
+			"icon": "https://cdn.jsdelivr.net/gh/awdrrawd/BC-AFC@main/Images/AFC-ICON.png",
 			"name": {
 				"en": "Abundantia Florum ─Chromatica─",
 				"cn": "繁戀如花 ─繽紛─"
@@ -648,7 +648,7 @@
 		},
 		{
 			"id": "FCM",
-			"name":  {
+			"name": {
 				"en": "Friends and ChatRoom Manager",
 				"cn": "好友與房間管理"
 			},
@@ -666,7 +666,8 @@
 		},
 		{
 			"id": "HSC",
-			"name":  {
+			"icon": "https://cdn.jsdelivr.net/gh/awdrrawd/BC-HSC@main/Assets/Icon/HSC-iconB2.png",
+			"name": {
 				"en": "Hypnotic Slave Club",
 				"cn": "催眠奴隸俱樂部"
 			},
@@ -679,6 +680,22 @@
 				{
 					"distribution": "dev",
 					"source": "https://awdrrawd.github.io/BC-HSC/assets/main.js"
+				}
+			]
+		},
+		{
+			"id": "KikiLink",
+			"icon": "https://cdn.jsdelivr.net/gh/Lilja000/KikiLink@82885c09d2be1cf22dd5423555557e96c1c1c7a3/design/branding/kikilink-emblem.webp",
+			"name": "KikiLink",
+			"description": "Social profiles, direct and group chat, presence, room tools, media, custom activities, reactions, and quality-of-life features.",
+			"author": "Kiki",
+			"repository": "https://github.com/Lilja000/KikiLink",
+			"tags": ["enhancements", "expansion"],
+			"type": "script",
+			"versions": [
+				{
+					"distribution": "stable",
+					"source": "https://cdn.jsdelivr.net/gh/Lilja000/KikiLink@82885c09d2be1cf22dd5423555557e96c1c1c7a3/dist/KikiLink.fusam.js"
 				}
 			]
 		},
@@ -697,6 +714,42 @@
 				{
 					"distribution": "stable",
 					"source": "https://www.emlalock.com/bc-emlalock.user.js"
+				}
+			]
+		},
+		{
+			"id": "AEE",
+			"icon": "https://cdn.jsdelivr.net/gh/awdrrawd/BC-AEE@main/public/AEE_icon.jpg",
+			"name": {
+				"cn": "外觀編輯拓展",
+				"en": "Appearance editing extension"
+			},
+			"description": "A clothing editor extension for the club, featuring a modern UI, a wide range of convenient tools, intuitive controls, highly customizable settings, as well as a completely revamped wardrobe system with expanded clothing capacity.",
+			"author": "Likolisu",
+			"repository": "https://github.com/awdrrawd/BC-AEE",
+			"tags": ["expansion"],
+			"type": "module",
+			"versions": [
+				{
+					"distribution": "beta",
+					"source": "https://awdrrawd.github.io/BC-AEE/assets/main.js"
+				}
+			]
+		},
+		{
+			"id": "BCPlus",
+			"icon": "https://seles84.github.io/bc-plus/icon.png",
+			"name": "BC+ (Bondage Club Plus)",
+			"description": "Rules, curses, punishments, contracts, auto-generated permissions, a virtual pet module and collar welding - runs standalone or alongside BCX",
+			"author": "Seles",
+			"repository": "https://github.com/Seles84/bc-plus",
+			"website": "https://seles84.github.io/bc-plus/",
+			"tags": ["enhancements", "expansion"],
+			"type": "script",
+			"versions": [
+				{
+					"distribution": "stable",
+					"source": "https://seles84.github.io/bc-plus/bcplus.js"
 				}
 			]
 		}

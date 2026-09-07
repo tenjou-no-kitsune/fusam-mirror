@@ -1,12 +1,13 @@
 // ==UserScript==
 // @name Fantastic Ultimate Solution to Addon Management Loader
 // @namespace https://www.bondageprojects.com/
-// @version 1.0.5
+// @version 1.0.6
 // @description A loader for the FUSAM
 // @author Sidious
 // @downloadURL https://tenjou-no-kitsune.github.io/fusam-mirror/loader.user.js
 // @match https://*.bondageprojects.elementfx.com/R*/*
 // @match https://*.bondage-europe.com/R*/*
+// @match https://*.bondageeurope.com/R*/*
 // @match https://*.bondageprojects.com/R*/*
 // @match https://*.bondage-asia.com/club/R*
 // @match http://localhost:*/*
