@@ -1,4 +1,4 @@
-{
+
 	"version": "1",
 	"addons": [
 		{
@@ -695,7 +695,7 @@
 			"versions": [
 				{
 					"distribution": "stable",
-					"source": "https://raw.githubusercontent.com/Lilja000/KikiLink/main/dist/KikiLink.fusam.js"
+					"source": "https://cdn.jsdelivr.net/gh/Lilja000/KikiLink@main/dist/KikiLink.fusam.js"
 				}
 			]
 		},
