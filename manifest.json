@@ -695,7 +695,7 @@
 			"versions": [
 				{
 					"distribution": "stable",
-					"source": "https://cdn.jsdelivr.net/gh/Lilja000/KikiLink@82885c09d2be1cf22dd5423555557e96c1c1c7a3/dist/KikiLink.fusam.js"
+					"source": "https://raw.githubusercontent.com/Lilja000/KikiLink/main/dist/KikiLink.fusam.js"
 				}
 			]
 		},
