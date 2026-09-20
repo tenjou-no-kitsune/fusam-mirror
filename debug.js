@@ -1,7 +1,6 @@
 import { downloadZip } from "./vendor/client-zip.js"
-import { getLastError } from "./loader.js"
+import { getLastError, getFUSAM } from "./loader.js"
 import { bcModSdk } from "./vendor/bcmodsdk.js"
-import { getFUSAM } from "./fusam.js"
 
 /**
  * @type {Map<string, () => string | Promise<string>>}

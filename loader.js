@@ -1,5 +1,4 @@
 import { sleep, waitFor } from "./delay.js"
-import { getFUSAM } from "./fusam.js"
 import { disableBrowserMod, enableBrowserMod, getBrowser } from "./localstore.js"
 import { getAddon, getAddonVersion, updateManifest } from "./manifest.js"
 import { disableAccountMod, getAccount, playerSettingsLoaded, saveAccount } from "./playerstore.js"
@@ -23,6 +22,14 @@ window.addEventListener("error", (event) => {
 		})
 	)
 })
+
+/**
+ *
+ * @returns {import("./types/fusam.js").FUSAMPublicAPI}
+ */
+export function getFUSAM() {
+	return /** @type {import("./types/fusam.js").FUSAMPublicAPI}} */ (window.FUSAM)
+}
 
 /**
  * @param {string} status
