@@ -752,6 +752,23 @@
 					"source": "https://seles84.github.io/bc-plus/bcplus.js"
 				}
 			]
+		},
+		{
+			"id": "BCSecPris",
+			"icon": "https://thesecretcoder-bc.gitlab.io/secretprison/icon.png",
+			"name": "Secret Prison",
+			"description": "Long cell and asylum sentences set by whisper, with parole by beep, taunts, status checks and a settings screen. Requires BCX",
+			"author": "TheSecretCoder",
+			"repository": "https://gitlab.com/TheSecretCoder-BC/secretprison",
+			"website": "https://gitlab.com/TheSecretCoder-BC/secretprison/-/blob/main/KEYHOLDER.md",
+			"tags": ["enhancements", "expansion"],
+			"type": "script",
+			"versions": [
+				{
+					"distribution": "stable",
+					"source": "https://thesecretcoder-bc.gitlab.io/secretprison/secretprison.js"
+				}
+			]
 		}
 	]
 }
