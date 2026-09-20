@@ -119,7 +119,8 @@ async function searchInput(e) {
 }
 
 function applyFilters() {
-	const userQuery = /** @type {HTMLInputElement | null} */ (document.getElementById("fusam-search")?.value ?? "")
+	const search = /** @type {HTMLInputElement | null} */ (document.getElementById("fusam-search"));
+	const userQuery = (search?.value ?? "")
 		.toLocaleLowerCase()
 		.trim()
 	for (const entry of document.querySelectorAll("#fusam-addons .fusam-addon-container")) {
