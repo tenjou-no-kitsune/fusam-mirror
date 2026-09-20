@@ -74,3 +74,15 @@ function saveBrowser() {
 	console.debug("[FUSAM]: Saving browser settings", settings)
 	setBrowser(settings)
 }
+
+const emergencyModeKey = "fusam.emergencyMode"
+
+export function isEmergencyMode() {
+	return window.localStorage.getItem(emergencyModeKey) === "true"
+}
+
+/** @param {boolean} enabled */
+export function setEmergencyMode(enabled) {
+	if (enabled) window.localStorage.setItem(emergencyModeKey, "true")
+	else window.localStorage.removeItem(emergencyModeKey)
+}

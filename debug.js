@@ -1,5 +1,6 @@
 import { downloadZip } from "./vendor/client-zip.js"
 import { getLastError, getFUSAM } from "./loader.js"
+import { isEmergencyMode } from "./localstore.js"
 import { bcModSdk } from "./vendor/bcmodsdk.js"
 
 /**
@@ -71,6 +72,7 @@ export function registerFUSAMDebugMethod() {
 		d += `Local storage: ${isLocalStorageAvailable() ? "available" : "unavailable"}\n`
 		d += `Domain used: ${window.location.host}\n`
 		d += `Last error: ${getLastError()}\n`
+		d += `Emergency mode: ${isEmergencyMode() ? "enabled" : "disabled"}\n`
 		d += `FUSAM-enabled addons:\n - ${Object.entries(getFUSAM().addons)
 			.map(([addon, ver]) => `${addon}:${JSON.stringify(ver)}`)
 			.join("\n - ")}\n`

@@ -21,6 +21,12 @@ const EN = {
 	by: "by",
 	submit: "Submit",
 	closeModal: "Click to close the modal",
+	emergencyMode: "Disable addon loading",
+	emergencyModeHelp:
+		"Prevents FUSAM from loading any browser or account addons until this is turned off. Reload the page to unload addons that already started.",
+	emergencyModeReloadPrompt: "Reload the page to unload addons that already started?",
+	reload: "Reload",
+	later: "Later",
 }
 
 const translations = {
@@ -47,6 +53,11 @@ const translations = {
 		by: "作者",
 		submit: "確定",
 		closeModal: "點擊以關閉視窗",
+		emergencyMode: "停用插件載入",
+		emergencyModeHelp: "啟用後，FUSAM 在關閉此選項前不會載入任何瀏覽器或帳號插件。若插件已開始載入，請重新整理頁面。",
+		emergencyModeReloadPrompt: "要重新整理頁面以卸載已載入的插件嗎？",
+		reload: "重新整理",
+		later: "稍後",
 	},
 	CN: {
 		addonManager: "插件管理器",
@@ -70,6 +81,11 @@ const translations = {
 		by: "作者",
 		submit: "确定",
 		closeModal: "点击以关闭窗口",
+		emergencyMode: "停用插件加载",
+		emergencyModeHelp: "启用后，FUSAM 在关闭此选项前不会加载任何浏览器或账号插件。若插件已开始加载，请刷新页面。",
+		emergencyModeReloadPrompt: "要刷新页面以卸载已加载的插件吗？",
+		reload: "刷新",
+		later: "稍后",
 	},
 	DE: {
 		addonManager: "Addon-Verwaltung",
@@ -97,6 +113,12 @@ const translations = {
 		browserOnly: "Kann nur im Browser geladen werden",
 		submit: "Bestätigen",
 		closeModal: "Zum Schließen klicken",
+		emergencyMode: "Addon-Laden deaktivieren",
+		emergencyModeHelp:
+			"Verhindert, dass FUSAM Browser- oder Konto-Addons lädt, bis dies wieder deaktiviert wird. Lade die Seite neu, um bereits gestartete Addons zu entladen.",
+		emergencyModeReloadPrompt: "Seite neu laden, um bereits gestartete Addons zu entladen?",
+		reload: "Neu laden",
+		later: "Später",
 	},
 	FR: {
 		addonManager: "Gestionnaire d’addons",
@@ -124,6 +146,12 @@ const translations = {
 		browserOnly: "Chargement possible uniquement dans le navigateur",
 		submit: "Valider",
 		closeModal: "Cliquer pour fermer",
+		emergencyMode: "Désactiver le chargement des addons",
+		emergencyModeHelp:
+			"Empêche FUSAM de charger les addons du navigateur et du compte tant que cette option est activée. Rechargez la page pour décharger les addons déjà démarrés.",
+		emergencyModeReloadPrompt: "Recharger la page pour décharger les addons déjà démarrés ?",
+		reload: "Recharger",
+		later: "Plus tard",
 	},
 	RU: {
 		addonManager: "Менеджер аддонов",
@@ -151,6 +179,12 @@ const translations = {
 		browserOnly: "Можно загрузить только в браузере",
 		submit: "Подтвердить",
 		closeModal: "Нажмите, чтобы закрыть",
+		emergencyMode: "Отключить загрузку аддонов",
+		emergencyModeHelp:
+			"FUSAM не будет загружать аддоны браузера и аккаунта, пока этот параметр включён. Обновите страницу, чтобы выгрузить уже запущенные аддоны.",
+		emergencyModeReloadPrompt: "Обновить страницу, чтобы выгрузить уже запущенные аддоны?",
+		reload: "Обновить",
+		later: "Позже",
 	},
 	UA: {
 		addonManager: "Менеджер аддонів",
@@ -177,6 +211,12 @@ const translations = {
 		browserOnly: "Можна завантажити лише у браузері",
 		submit: "Підтвердити",
 		closeModal: "Натисніть, щоб закрити",
+		emergencyMode: "Вимкнути завантаження аддонів",
+		emergencyModeHelp:
+			"FUSAM не завантажуватиме аддони браузера та облікового запису, доки цей параметр увімкнено. Оновіть сторінку, щоб вивантажити вже запущені аддони.",
+		emergencyModeReloadPrompt: "Оновити сторінку, щоб вивантажити вже запущені аддони?",
+		reload: "Оновити",
+		later: "Пізніше",
 	},
 	ES: {
 		addonManager: "Gestor de addons",
@@ -204,6 +244,12 @@ const translations = {
 		by: "por",
 		submit: "Confirmar",
 		closeModal: "Haz clic para cerrar",
+		emergencyMode: "Desactivar la carga de addons",
+		emergencyModeHelp:
+			"Impide que FUSAM cargue addons del navegador o de la cuenta hasta que desactives esta opción. Recarga la página para descargar los addons que ya hayan arrancado.",
+		emergencyModeReloadPrompt: "¿Recargar la página para descargar los addons que ya hayan arrancado?",
+		reload: "Recargar",
+		later: "Más tarde",
 	},
 }
 
