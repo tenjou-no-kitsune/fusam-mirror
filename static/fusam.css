@@ -218,6 +218,30 @@
 	}
 }
 
+#fusam-emergency-row {
+	display: flex;
+	align-items: center;
+	gap: 1em;
+	flex-wrap: wrap;
+	padding: 0.55em 1em;
+	background: var(--fusam-element);
+	border-top: 1px solid var(--fusam-border);
+}
+#fusam-emergency-row > .fusam-emergency-toggle {
+	display: flex;
+	align-items: center;
+	gap: 0.45em;
+	white-space: nowrap;
+	cursor: pointer;
+	font-weight: 700;
+}
+#fusam-emergency-row > .fusam-emergency-help {
+	margin: 0;
+	flex: 1;
+	min-width: 16em;
+	font-size: 0.9em;
+}
+
 #fusam-addon-intro {
 	position: relative;
 	z-index: 2;

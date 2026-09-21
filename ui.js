@@ -19,8 +19,8 @@
 import { BaseURL } from "./config.js"
 import { canDebug, generateDebugReport } from "./debug.js"
 import { waitFor } from "./delay.js"
-import { loadAddons } from "./loader.js"
-import { disableBrowserMod, enableBrowserMod, browserDistribution } from "./localstore.js"
+import { getFUSAM, loadAddons } from "./loader.js"
+import { disableBrowserMod, enableBrowserMod, browserDistribution, isEmergencyMode, setEmergencyMode } from "./localstore.js"
 import { getManifest } from "./manifest.js"
 import {
 	disableAccountMod,
@@ -119,7 +119,8 @@ async function searchInput(e) {
 }
 
 function applyFilters() {
-	const userQuery = /** @type {HTMLInputElement | null} */ (document.getElementById("fusam-search")?.value ?? "")
+	const search = /** @type {HTMLInputElement | null} */ (document.getElementById("fusam-search"));
+	const userQuery = (search?.value ?? "")
 		.toLocaleLowerCase()
 		.trim()
 	for (const entry of document.querySelectorAll("#fusam-addons .fusam-addon-container")) {
@@ -334,9 +335,11 @@ async function drawAddonManager() {
 		selectAddon,
 		toggleLanguageMenu,
 		changeLanguage,
+		toggleEmergencyMode,
 	})
 	applyViewMode()
 	applyAddonFilterButton()
+	applyEmergencyMode()
 	applyFilters()
 
 	function draw() {
@@ -368,6 +371,13 @@ async function drawAddonManager() {
 					${drawExitButton()}
 				</div>
 			</header>
+			<div id="fusam-emergency-row" class="${isEmergencyMode() ? "warn" : ""}">
+				<label class="fusam-emergency-toggle">
+					<input type="checkbox" id="fusam-emergency-mode" ${isEmergencyMode() ? "checked" : ""} onchange="toggleEmergencyMode()">
+					${t("emergencyMode")}
+				</label>
+				<p class="fusam-emergency-help">${t("emergencyModeHelp")}</p>
+			</div>
 			<div id="fusam-addon-intro" class="fusam-hide"></div>
 			<div id="fusam-addon-manager-body">
 			<div class="fusam-intro ${defaultIntroHidden ? "fusam-hide" : ""}">
@@ -603,6 +613,31 @@ function loadCSS() {
 	stylesheet.setAttribute("rel", "stylesheet")
 	stylesheet.setAttribute("href", BaseURL + "static/fusam.css")
 	document.head.appendChild(stylesheet)
+}
+
+/** @this {HTMLInputElement} */
+async function toggleEmergencyMode() {
+	setEmergencyMode(this.checked)
+	applyEmergencyMode()
+	if (!this.checked) return
+	if (Object.keys(getFUSAM()?.addons ?? {}).length === 0) return
+	const [answer] = await showAsyncModal({
+		prompt: t("emergencyModeReloadPrompt"),
+		buttons: {
+			submit: t("reload"),
+			cancel: t("later"),
+		},
+	})
+	if (answer === "submit") {
+		window.location.reload()
+	}
+}
+
+function applyEmergencyMode() {
+	const enabled = isEmergencyMode()
+	document.getElementById("fusam-emergency-row")?.classList.toggle("warn", enabled)
+	const checkbox = document.getElementById("fusam-emergency-mode")
+	if (checkbox instanceof HTMLInputElement) checkbox.checked = enabled
 }
 
 export function hookUI() {
