@@ -172,26 +172,6 @@
 			]
 		},
 		{
-			"id": "ciamod",
-			"icon": "https://gitgud.io/cia/cia-bc/-/raw/master/CIA_logo.png?raw=true",
-			"name": "CIA (Community Information Addon)",
-			"description": "This set of scripts adds several chat commands to BC. The commands work in conjunction with a central database of players managed by members of the community of the Slave Helpline room and the BCCA",
-			"author": "JD & Ramona",
-			"repository": "https://gitgud.io/cia/cia-bc",
-			"tags": ["enhancements", "expansion"],
-			"type": "script",
-			"versions": [
-				{
-					"distribution": "stable",
-					"source": "https://bondage-dreams.com/cia.js"
-				},
-				{
-					"distribution": "dev",
-					"source": "https://bondage-dreams.com/ciadev.js"
-				}
-			]
-		},
-		{
 			"id": "EBCH",
 			"name": "Eli's Bondage Club Helper (EBCH)",
 			"description": "Ungarble, custom notifications, altering other player's poses",
