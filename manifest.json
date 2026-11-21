@@ -856,6 +856,21 @@
 					"source": "https://dwfreegethub.github.io/HypnosisAddon/dev/HypnosisAddon.js"
 				}
 			]
+		},
+		{
+			"id": "SYNAPSE",
+			"icon": "https://synapse-335fc1.gitlab.io/icon.png",
+			"name": "SYNAPSE",
+			"description": "SYNAPSE is a roleplaying game that lives inside Bondage Club. Volunteer for an in-story \"compliance implant\", then grow it through play: earn levels, unlock abilities, train solo, and face off against other players in the same game.",
+			"author": "SM Studios",
+			"tags": ["expansion", "enhancements"],
+			"type": "script",
+			"versions": [
+				{
+					"distribution": "stable",
+					"source": "https://synapse-335fc1.gitlab.io/synapse.js"
+				}
+			]
 		}
 	]
 }
