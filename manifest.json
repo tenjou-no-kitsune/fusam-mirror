@@ -871,6 +871,22 @@
 					"source": "https://synapse-335fc1.gitlab.io/synapse.js"
 				}
 			]
+		},
+		{
+			"id": "SCE",
+			"icon": "https://proudkiller0015.github.io/sce/icon-128.png",
+			"name": "SCE - Slime Clothing Extension",
+			"description": "New clothes and activities for your wardrobe and chats. More clothes coming soon!",
+			"author": "SlimeQueenSamantha",
+			"repository": "https://github.com/Proudkiller0015/sce",
+			"tags": ["expansion"],
+			"type": "script",
+			"versions": [
+				{
+					"distribution": "beta",
+					"source": "https://proudkiller0015.github.io/sce/sce.js"
+				}
+			]
 		}
 	]
 }
