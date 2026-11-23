@@ -172,26 +172,6 @@
 			]
 		},
 		{
-			"id": "ciamod",
-			"icon": "https://gitgud.io/cia/cia-bc/-/raw/master/CIA_logo.png?raw=true",
-			"name": "CIA (Community Information Addon)",
-			"description": "This set of scripts adds several chat commands to BC. The commands work in conjunction with a central database of players managed by members of the community of the Slave Helpline room and the BCCA",
-			"author": "JD & Ramona",
-			"repository": "https://gitgud.io/cia/cia-bc",
-			"tags": ["enhancements", "expansion"],
-			"type": "script",
-			"versions": [
-				{
-					"distribution": "stable",
-					"source": "https://bondage-dreams.com/cia.js"
-				},
-				{
-					"distribution": "dev",
-					"source": "https://bondage-dreams.com/ciadev.js"
-				}
-			]
-		},
-		{
 			"id": "EBCH",
 			"name": "Eli's Bondage Club Helper (EBCH)",
 			"description": "Ungarble, custom notifications, altering other player's poses",
@@ -361,8 +341,24 @@
 		{
 			"id": "MBCFS",
 			"icon": "https://gitgud.io/maples-bc-plugins/fetish-share/-/raw/main/src/assets/icon.png",
-			"name": "Maple's BC FetishShare",
-			"description": "Displays user Fetish and Arousal preferences in Bios, and calculates compatibility between players.",
+			"name": {
+				"en": "BC Fetish Share",
+				"de": "BC Fetisch-Austausch",
+				"fr": "BC Partage de fétiches",
+				"ru": "Бондаж Клуб: обмен фетишами",
+				"ua": "Бондаж Клуб: обмін фетишами",
+				"cn": "束缚俱乐部爱好分享",
+				"tw": "束縛俱樂部愛好分享"
+			},
+			"description": {
+				"en": "Shows how well your fetishes and activities match other players, with match badges in chat rooms and a list of the people you've met.",
+				"de": "Zeigt, wie gut deine Fetische und Aktivitäten zu denen anderer passen, mit Abzeichen für Übereinstimmungen in Chaträumen und einer Liste der Leute, die du getroffen hast.",
+				"fr": "Montre à quel point tes fétiches et activités correspondent à ceux des autres, avec des badges d'affinité dans les salons de discussion et une liste des personnes que tu as croisées.",
+				"ru": "Показывает, насколько твои фетиши и действия совпадают с чужими, со значками совместимости в чат-комнатах и списком людей, которых ты встречаешь.",
+				"ua": "Показує, наскільки твої фетиші й дії збігаються з чужими, зі значками сумісності в чат-кімнатах і списком людей, яких ти зустрічаєш.",
+				"cn": "显示你与其他玩家的爱好和动作匹配程度，聊天室里有匹配徽章，还会列出你遇见过的人。",
+				"tw": "顯示你與其他玩家的愛好和動作匹配程度，聊天室裡有匹配徽章，還會列出你遇見過的人。"
+			},
 			"author": "maple",
 			"tags": ["enhancements"],
 			"type": "script",
@@ -767,6 +763,128 @@
 				{
 					"distribution": "stable",
 					"source": "https://thesecretcoder-bc.gitlab.io/secretprison/secretprison.js"
+				}
+			]
+		},
+		{
+			"id": "FBM",
+			"icon": "https://freya-bc.github.io/Freyas-Better-Maps/assets/freyas-better-maps-logo.jpg",
+			"name": "Freya’s Better Maps",
+			"description": "Bondage Club map helpers: typing bubbles, copy and paste, build tools, templates, map library, hearing-range whisper, SuperZoom.",
+			"author": "Freya",
+			"repository": "https://github.com/Freya-BC/Freyas-Better-Maps",
+			"tags": ["enhancements"],
+			"type": "script",
+			"versions": [
+				{
+					"distribution": "stable",
+					"source": "https://freya-bc.github.io/Freyas-Better-Maps/loader.js"
+				}
+			]
+		},
+		{
+			"id": "Seidr",
+			"icon": "https://freya-bc.github.io/Freyas-Seidr/assets/freyas-seidr-logo.png",
+			"name": "Freya’s Seidr",
+			"description": "Simple Plugin for Pulling Left/Right and Cuddle for Cuddle piles. Additional new Actions. A Room Manager and other helpful utility tools",
+			"author": "Freya",
+			"repository": "https://github.com/Freya-BC/Freyas-Seidr",
+			"website": "https://freya-bc.github.io/Freyas-Seidr/",
+			"tags": ["enhancements"],
+			"type": "script",
+			"versions": [
+				{
+					"distribution": "stable",
+					"source": "https://freya-bc.github.io/Freyas-Seidr/loader.js"
+				}
+			]
+		},
+		{
+			"id": "SlimeBeep",
+			"icon": "https://proudkiller0015.github.io/slimebeep/icon-128.png",
+			"name": "SlimeBeep",
+			"description": "A cute beep messenger: chat with each friend, see who's online and where, beep many friends at once (WaveBeep), group chats with other SlimeBeep users, profile pictures and a night mode. Uses its own server on Cloudflare (Workers + Durable Objects, code in the repo's relay/ folder) to store group chats (members, last 200 messages, pictures) and beeps left for offline friends (kept up to 14 days).",
+			"author": "SlimeQueenSamantha",
+			"repository": "https://github.com/Proudkiller0015/slimebeep",
+			"tags": ["enhancements", "expansion"],
+			"type": "script",
+			"versions": [
+				{
+					"distribution": "beta",
+					"source": "https://proudkiller0015.github.io/slimebeep/slimebeep.js"
+				}
+			]
+		},
+		{
+			"id": "GGC",
+			"icon": "https://galia-bc.github.io/galia.github.io/club-gaming/images/galias_logo.png",
+			"name": "Galia's Gambling Club (GGC)",
+			"description": "Multiplayer games, a bank, player trades, and animated chat-room effects.",
+			"author": "Galia",
+			"repository": "https://github.com/galia-bc/galia.github.io",
+			"website": "https://galia-bc.github.io/galia.github.io/",
+			"tags": ["enhancements", "expansion"],
+			"type": "script",
+			"versions": [
+				{
+					"distribution": "stable",
+					"source": "https://galia-bc.github.io/galia.github.io/club-gaming/stable/club-gaming.js"
+				},
+				{
+					"distribution": "beta",
+					"source": "https://galia-bc.github.io/galia.github.io/club-gaming/beta/club-gaming.js"
+				}
+			]
+		},
+		{
+			"id": "ECHS",
+			"icon": "https://dwfreegethub.github.io/HypnosisAddon/icon.png",
+			"name": "Erotic Chat Hypnosis Suite (ECHS)",
+			"description": "Interactive hypnosis between players—featuring inductions, spoken suggestions, custom triggers, crafted drinks, and more. Designed to be the most comprehensive hypnosis add-on for BC.",
+			"author": "DWfree",
+			"repository": "https://github.com/Dwfreegethub/HypnosisAddon",
+			"tags": ["expansion"],
+			"type": "script",
+			"website": "https://github.com/Dwfreegethub/HypnosisAddon/wiki",
+			"versions": [
+				{
+					"distribution": "stable",
+					"source": "https://dwfreegethub.github.io/HypnosisAddon/HypnosisAddon.js"
+				},
+				{
+					"distribution": "dev",
+					"source": "https://dwfreegethub.github.io/HypnosisAddon/dev/HypnosisAddon.js"
+				}
+			]
+		},
+		{
+			"id": "SYNAPSE",
+			"icon": "https://synapse-335fc1.gitlab.io/icon.png",
+			"name": "SYNAPSE",
+			"description": "SYNAPSE is a roleplaying game that lives inside Bondage Club. Volunteer for an in-story \"compliance implant\", then grow it through play: earn levels, unlock abilities, train solo, and face off against other players in the same game.",
+			"author": "SM Studios",
+			"tags": ["expansion", "enhancements"],
+			"type": "script",
+			"versions": [
+				{
+					"distribution": "stable",
+					"source": "https://synapse-335fc1.gitlab.io/synapse.js"
+				}
+			]
+		},
+		{
+			"id": "SCE",
+			"icon": "https://proudkiller0015.github.io/sce/icon-128.png",
+			"name": "SCE - Slime Clothing Extension",
+			"description": "New clothes and activities for your wardrobe and chats. More clothes coming soon!",
+			"author": "SlimeQueenSamantha",
+			"repository": "https://github.com/Proudkiller0015/sce",
+			"tags": ["expansion"],
+			"type": "script",
+			"versions": [
+				{
+					"distribution": "beta",
+					"source": "https://proudkiller0015.github.io/sce/sce.js"
 				}
 			]
 		}
